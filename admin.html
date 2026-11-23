@@ -79,6 +79,8 @@ input[type=color]{width:56px;height:40px;padding:2px;border:1px solid #AEB1AC;ba
 .fotos figcaption button{padding:4px 2px;font-size:13px}
 .subir{width:132px;height:99px;border:1.5px dashed #AEB1AC;background:none;display:grid;place-items:center;text-align:center;font-size:14px;color:var(--granito);padding:8px}
 .subir:hover{border-color:var(--azul);color:var(--azul)}
+.enlace-caja{display:flex;gap:8px;align-items:center;flex:1 1 320px}
+.enlace-caja input{flex:1}
 @media (max-width:800px){.app{grid-template-columns:1fr}.lado{position:static;height:auto}.bi{grid-template-columns:1fr}.barra h1{font-size:24px}}
 </style>
 </head>
@@ -205,8 +207,8 @@ function campo(f, obj, ruta) {
     const o = v || {}, el = (l) => f.t === "bi" ? `<input type="text" data-r="${r}.${l}" value="${esc(o[l])}" aria-label="${f.n} (${l === "es" ? "español" : "inglés"})">` : `<textarea data-r="${r}.${l}" aria-label="${f.n} (${l === "es" ? "español" : "inglés"})"${f.alto ? ` style="min-height:${f.alto}px"` : ""}>${esc(o[l])}</textarea>`;
     return `<div class="campo"><span>${f.n}</span><div class="bi"><label><em>ES</em>${el("es")}</label><label><em>EN</em>${el("en")}</label></div>${ay}</div>`;
   }
-  if (f.t === "foto") return `<div class="campo"><span>${f.n}</span><div class="fotos">${v ? `<figure><img src="${esc(v)}" alt=""><figcaption><span></span><button class="btn3 peligro" data-quitar="${r}">Quitar</button></figcaption></figure>` : `<button type="button" class="subir" data-subir="${r}">Subir foto</button>`}</div>${ay}</div>`;
-  if (f.t === "fotos") { const a = v || []; return `<div class="campo"><span>${f.n}</span><div class="fotos">${a.map((u, i) => `<figure><img src="${esc(u)}" alt=""><figcaption>${i ? `<button class="btn3" data-primera="${r}.${i}">Principal</button>` : "<span>Principal</span>"}<button class="btn3 peligro" data-quitar="${r}.${i}">Quitar</button></figcaption></figure>`).join("")}<button type="button" class="subir" data-subir="${r}" data-varias>Subir fotos</button></div>${ay}</div>`; }
+  if (f.t === "foto") return `<div class="campo"><span>${f.n}</span><div class="fotos">${v ? `<figure><img src="${esc(v)}" alt=""><figcaption><span></span><button class="btn3 peligro" data-quitar="${r}">Quitar</button></figcaption></figure>` : `<button type="button" class="subir" data-subir="${r}">Subir foto</button><button type="button" class="subir" data-enlace="${r}">Pegar enlace</button>`}</div>${ay}</div>`;
+  if (f.t === "fotos") { const a = v || []; return `<div class="campo"><span>${f.n}</span><div class="fotos">${a.map((u, i) => `<figure><img src="${esc(u)}" alt=""><figcaption>${i ? `<button class="btn3" data-primera="${r}.${i}">Principal</button>` : "<span>Principal</span>"}<button class="btn3 peligro" data-quitar="${r}.${i}">Quitar</button></figcaption></figure>`).join("")}<button type="button" class="subir" data-subir="${r}" data-varias>Subir fotos</button><button type="button" class="subir" data-enlace="${r}" data-varias>Pegar enlace</button></div>${ay}</div>`; }
   if (f.t === "sub") { const a = v || []; return `<div class="grupo"><h3>${f.n}</h3><div class="lista">${a.map((it, i) => item(f, it, r + "." + i, i, a.length, true)).join("")}</div><button type="button" class="btn2" data-nuevo="${r}">${f.nuevo}</button></div><div style="height:22px"></div>`; }
   return "";
 }
@@ -263,6 +265,9 @@ document.addEventListener("click", async e => {
   else if (d.borrarsi) { const [a, i] = padre(d.borrarsi); a.splice(i, 1); abierto = null; marcar(); pintar(); }
   else if (d.quitar) { const p = partes(d.quitar); if (/^\d+$/.test(p[p.length - 1])) { const [a, i] = padre(d.quitar); a.splice(i, 1); } else poner(d.quitar, ""); marcar(); pintar(); }
   else if (d.primera) { const [a, i] = padre(d.primera); a.unshift(a.splice(i, 1)[0]); marcar(); pintar(); }
+  else if (d.enlace) { b.outerHTML = `<span class="enlace-caja"><input type="url" placeholder="https://…" aria-label="Enlace de la foto"><button type="button" class="btn2" data-enlaceok="${d.enlace}"${d.varias !== undefined ? " data-varias" : ""}>Añadir</button><button type="button" class="btn3" data-no>Cancelar</button></span>`; const i = document.querySelector(".enlace-caja input"); if (i) i.focus(); }
+  else if (d.enlaceok) { const i = b.parentNode.querySelector("input"), url = i.value.trim(); if (!/^https:\/\/\S+$/.test(url)) { i.setCustomValidity("Pega un enlace que empiece por https://"); i.reportValidity(); return; }
+    if (d.varias !== undefined) { const a = coger(d.enlaceok) || (poner(d.enlaceok, []), coger(d.enlaceok)); a.push(url); } else poner(d.enlaceok, url); marcar(); pintar(); }
   else if (d.subir) {
     const varias = d.varias !== undefined, files = await elegir(varias); if (!files.length) return;
     b.disabled = true; b.textContent = "Subiendo…";

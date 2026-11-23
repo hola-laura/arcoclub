@@ -30,7 +30,7 @@ window.CONTENIDO_BASE = {
    "es": "Arco Club es una agencia pequeña de la calle de Toledo. Llevamos pocas viviendas a la vez para conocer bien cada una: la casa, el edificio y el barrio.",
    "en": "Arco Club is a small agency on Calle de Toledo. We take on a few homes at a time so we know each one well: the home, the building and the neighbourhood."
   },
-  "foto": "",
+  "foto": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1600",
   "tituloViviendas": {
    "es": "Propiedades destacadas",
    "en": "Featured properties"
@@ -50,7 +50,8 @@ window.CONTENIDO_BASE = {
   "textoVender": {
    "es": "Cuéntanos dónde está y te decimos, sin compromiso, por cuánto creemos que se puede vender.",
    "en": "Tell us where it is and we will tell you, with no obligation, what we think it could sell for."
-  }
+  },
+  "fotoVender": "https://images.pexels.com/photos/5236221/pexels-photo-5236221.jpeg?auto=compress&cs=tinysrgb&w=1600"
  },
  "propiedades": [
   {
@@ -83,7 +84,12 @@ window.CONTENIDO_BASE = {
     "es": "Casa independiente de 800 m² construidos y cinco dormitorios, en una parcela de 791 m² en Rejas. Tiene garaje.",
     "en": "Detached house with 800 m² built and five bedrooms, on a 791 m² plot in Rejas. Garage included."
    },
-   "fotos": [],
+   "fotos": [
+    "https://images.pexels.com/photos/28652349/pexels-photo-28652349.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/26859026/pexels-photo-26859026.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/28729467/pexels-photo-28729467.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/6585741/pexels-photo-6585741.jpeg?auto=compress&cs=tinysrgb&w=1600"
+   ],
    "lat": 40.4452,
    "lng": -3.5725,
    "enlace": ""
@@ -118,7 +124,12 @@ window.CONTENIDO_BASE = {
     "es": "Piso de 84 m² y tres dormitorios en Cuatro Caminos. Cuarta planta, interior, con ascensor.",
     "en": "84 m² flat with three bedrooms in Cuatro Caminos. Fourth floor, interior-facing, with lift."
    },
-   "fotos": [],
+   "fotos": [
+    "https://images.pexels.com/photos/19689230/pexels-photo-19689230.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/8146326/pexels-photo-8146326.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/6186819/pexels-photo-6186819.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/11701114/pexels-photo-11701114.jpeg?auto=compress&cs=tinysrgb&w=1600"
+   ],
    "lat": 40.4478,
    "lng": -3.7005,
    "enlace": ""
@@ -153,7 +164,11 @@ window.CONTENIDO_BASE = {
     "es": "Piso exterior de 78 m² y tres dormitorios en Puerta del Ángel. Tercera planta, sin ascensor.",
     "en": "Street-facing 78 m² flat with three bedrooms in Puerta del Ángel. Third floor, no lift."
    },
-   "fotos": [],
+   "fotos": [
+    "https://images.pexels.com/photos/7045996/pexels-photo-7045996.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/16056401/pexels-photo-16056401.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/6492398/pexels-photo-6492398.jpeg?auto=compress&cs=tinysrgb&w=1600"
+   ],
    "lat": 40.4105,
    "lng": -3.73,
    "enlace": ""
@@ -188,7 +203,11 @@ window.CONTENIDO_BASE = {
     "es": "Dúplex de 107 m² y tres dormitorios en Vista Alegre. Primera planta, interior, sin ascensor.",
     "en": "107 m² duplex with three bedrooms in Vista Alegre. First floor, interior-facing, no lift."
    },
-   "fotos": [],
+   "fotos": [
+    "https://images.pexels.com/photos/7031214/pexels-photo-7031214.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/24245791/pexels-photo-24245791.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/8082194/pexels-photo-8082194.jpeg?auto=compress&cs=tinysrgb&w=1600"
+   ],
    "lat": 40.3875,
    "lng": -3.7405,
    "enlace": ""
@@ -223,7 +242,11 @@ window.CONTENIDO_BASE = {
     "es": "Piso exterior de 40 m² y dos dormitorios en Almagro. Cuarta planta, sin ascensor.",
     "en": "Street-facing 40 m² flat with two bedrooms in Almagro. Fourth floor, no lift."
    },
-   "fotos": [],
+   "fotos": [
+    "https://images.pexels.com/photos/7045991/pexels-photo-7045991.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/7535019/pexels-photo-7535019.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/7534538/pexels-photo-7534538.jpeg?auto=compress&cs=tinysrgb&w=1600"
+   ],
    "lat": 40.4395,
    "lng": -3.6975,
    "enlace": ""
@@ -258,7 +281,10 @@ window.CONTENIDO_BASE = {
     "es": "Dúplex exterior de 90 m² y dos dormitorios en Camarma de Esteruelas. Primera planta, con ascensor y garaje.",
     "en": "Street-facing 90 m² duplex with two bedrooms in Camarma de Esteruelas. First floor, with lift and garage."
    },
-   "fotos": [],
+   "fotos": [
+    "https://images.pexels.com/photos/7214332/pexels-photo-7214332.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/6032203/pexels-photo-6032203.jpeg?auto=compress&cs=tinysrgb&w=1600"
+   ],
    "lat": 40.55,
    "lng": -3.3745,
    "enlace": ""
@@ -276,7 +302,7 @@ window.CONTENIDO_BASE = {
     "es": "Calles arboladas, edificios señoriales de finales del XIX y palacetes que hoy son embajadas. Está pegado a la Castellana y se llega andando a casi todo el centro.",
     "en": "Tree-lined streets, grand late-19th-century buildings and small palaces that now house embassies. It sits next to the Castellana, within walking distance of most of the centre."
    },
-   "foto": "",
+   "foto": "https://images.pexels.com/photos/32903545/pexels-photo-32903545.jpeg?auto=compress&cs=tinysrgb&w=1600",
    "lat": 40.433,
    "lng": -3.6935
   },
@@ -291,7 +317,7 @@ window.CONTENIDO_BASE = {
     "es": "Un barrio de comercio y vida de calle alrededor de la glorieta y de Bravo Murillo, con el mercado de Maravillas a un paso. Tres líneas de metro (1, 2 y 6) lo conectan con toda la ciudad.",
     "en": "A neighbourhood of shops and street life around the roundabout and Bravo Murillo, with the Maravillas market nearby. Three metro lines (1, 2 and 6) link it to the whole city."
    },
-   "foto": "",
+   "foto": "https://images.pexels.com/photos/10431546/pexels-photo-10431546.jpeg?auto=compress&cs=tinysrgb&w=1600",
    "lat": 40.447,
    "lng": -3.704
   },
@@ -306,7 +332,7 @@ window.CONTENIDO_BASE = {
     "es": "Al otro lado del río, entre Madrid Río y la Casa de Campo. Barrio tranquilo, con el centro a pocos minutos y mucho verde cerca.",
     "en": "Across the river, between Madrid Río and the Casa de Campo. A quiet neighbourhood, minutes from the centre and close to a lot of green space."
    },
-   "foto": "",
+   "foto": "https://images.pexels.com/photos/35417681/pexels-photo-35417681.jpeg?auto=compress&cs=tinysrgb&w=1600",
    "lat": 40.413,
    "lng": -3.729
   },
@@ -321,7 +347,7 @@ window.CONTENIDO_BASE = {
     "es": "Barrio de siempre en Carabanchel, alrededor de General Ricardos y del Palacio de Vistalegre. Metro de la línea 5 y precios más contenidos que en la almendra central.",
     "en": "A long-established neighbourhood in Carabanchel, around General Ricardos and the Palacio de Vistalegre. Metro line 5 and gentler prices than inside the M-30."
    },
-   "foto": "",
+   "foto": "https://images.pexels.com/photos/258181/pexels-photo-258181.jpeg?auto=compress&cs=tinysrgb&w=1600",
    "lat": 40.386,
    "lng": -3.742
   },
@@ -336,7 +362,7 @@ window.CONTENIDO_BASE = {
     "es": "Al este de la ciudad, cerca de la A-2 y del aeropuerto. Aquí hay algo poco habitual en Madrid: colonias de casas con parcela.",
     "en": "In the east of the city, near the A-2 and the airport. It has something rare in Madrid: streets of detached houses with their own plots."
    },
-   "foto": "",
+   "foto": "https://images.pexels.com/photos/8134750/pexels-photo-8134750.jpeg?auto=compress&cs=tinysrgb&w=1600",
    "lat": 40.446,
    "lng": -3.573
   },
@@ -351,7 +377,7 @@ window.CONTENIDO_BASE = {
     "es": "Un pueblo al noreste de la Comunidad de Madrid, junto a Alcalá de Henares. Más espacio y más calma, a unos 40 km de la capital.",
     "en": "A village in the north-east of the Madrid region, next to Alcalá de Henares. More space and more calm, about 40 km from the capital."
    },
-   "foto": "",
+   "foto": "https://images.pexels.com/photos/6032280/pexels-photo-6032280.jpeg?auto=compress&cs=tinysrgb&w=1600",
    "lat": 40.55,
    "lng": -3.373
   }
