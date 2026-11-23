@@ -413,7 +413,7 @@ function plano(puntos, radio) {
 }
 const esPexels = u => /images\.pexels\.com/.test(u || "");
 const tam = (u, w) => esPexels(u) ? u.replace(/([?&]w=)\d+/, "$1" + w) : u;
-const img = (url, alt, semilla, entera, w) => url ? `<img src="${esc(tam(url, w || 900))}" alt="${esc(alt)}" loading="lazy">` + (esPexels(url) && semilla ? `<span class="pend">${lang === "es" ? "Imagen de ejemplo" : "Sample image"}</span>` : "") : fachada(semilla, entera) + `<span class="pend">${lang === "es" ? "Foto pendiente" : "Photo to come"}</span>`;
+const img = (url, alt, semilla, entera, w) => url ? `<img src="${esc(tam(url, w || 900))}" alt="${esc(alt)}" loading="lazy">` : fachada(semilla, entera) + `<span class="pend">${lang === "es" ? "Foto pendiente" : "Photo to come"}</span>`;
 const estado = p => t().estados[p.estado] ? `<span class="estado">${t().estados[p.estado]}</span>` : "";
 const resumen = p => [p.m2 && p.m2 + t().m, p.hab && t().hab(p.hab), p.banos && t().ban(p.banos)].filter(Boolean).join(", ");
 const tarjeta = p => { const b = barrio(p.barrio); return `<a class="casa" href="#vivienda-${esc(p.id)}">
@@ -571,7 +571,7 @@ function marco() {
     <div><a class="logo" href="#inicio"><svg class="lg" viewBox="0 0 232 46" aria-hidden="true"><path d="M0 43V18a16 16 0 0 1 32 0v25h-10V19a9.5 9.5 0 0 0-19 0v24z" fill="currentColor"/><text x="40" y="43" font-family="Fraunces,Georgia,serif" font-weight="500" font-size="56" letter-spacing="1" fill="currentColor" style="font-variation-settings:'opsz' 144">RCO</text><text x="172" y="43" font-family="Fraunces,Georgia,serif" font-style="italic" font-weight="400" font-size="24" fill="var(--oro)">Club</text></svg></a></div>
     <ul>${en.map(([h, n]) => `<li><a href="#${h}">${n}</a></li>`).join("")}</ul>
     <ul><li>${esc(g.direccion)}</li><li>${esc(g.cp)}</li>${g.telefono ? `<li><a href="tel:${esc(String(g.telefono).replace(/\s/g, ""))}">${esc(g.telefono)}</a></li>` : ""}${g.correo ? `<li><a href="mailto:${esc(g.correo)}">${esc(g.correo)}</a></li>` : ""}${g.idealista ? `<li><a href="${esc(g.idealista)}" target="_blank" rel="noopener">${x.tambien}</a></li>` : ""}</ul>
-  </div><div class="fin"><span>© ${new Date().getFullYear()} Arco Club. ${x.derechos}</span>${JSON.stringify(C).includes("images.pexels.com") ? `<span>${lang === "es" ? "Las imágenes de ejemplo son de Pexels." : "Sample images are from Pexels."}</span>` : ""}<a href="#privacidad">${x.privacidad}</a></div></div>`;
+  </div><div class="fin"><span>© ${new Date().getFullYear()} Arco Club. ${x.derechos}</span><a href="#privacidad">${x.privacidad}</a></div></div>`;
 }
 function pintar(mismo) {
   const h = decodeURIComponent(location.hash.slice(1));
