@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Panel de Arco Club</title>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--cal:#F5F6F3;--blanco:#fff;--tinta:#141822;--azul:#2A2A2A;--granito:#62666E;--linea:#D9DBD6;--piedra:#E9EAE5;--albero:#E2A93B;--rojo:#A3261E;--verde:#1E6B3C;--serif:"Jost",system-ui,sans-serif;--sans:"Hanken Grotesk",system-ui,sans-serif}
+:root{--cal:#F6F1E7;--blanco:#fff;--tinta:#12261F;--azul:#173B2F;--granito:#62666E;--linea:#D9DBD6;--piedra:#E9EAE5;--albero:#E2A93B;--rojo:#A3261E;--verde:#1E6B3C;--serif:"Fraunces",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:var(--cal);color:var(--tinta);font:400 16px/1.5 var(--sans)}
 h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
@@ -29,7 +29,7 @@ button{font:500 15px var(--sans);cursor:pointer;color:inherit}
 .lado .marca{font:400 30px var(--serif);padding:0 10px 20px;display:block}
 .lado button{display:flex;justify-content:space-between;width:100%;text-align:left;background:none;border:0;color:#fff;padding:10px;border-radius:2px;font-size:16px;opacity:.75}
 .lado button:hover{opacity:1}
-.lado button[aria-current]{background:#B9A26A;opacity:1}
+.lado button[aria-current]{background:#C08A2B;color:#12261F;opacity:1}
 .lado button i{font-style:normal;color:var(--albero)}
 .lado .fuera{margin-top:24px;padding:16px 10px 0;border-top:1px solid rgba(255,255,255,.2);display:grid;gap:10px;font-size:15px}
 .lado .fuera a{color:#fff}
@@ -197,7 +197,7 @@ function campo(f, obj, ruta) {
   const v = obj[f.k], r = ruta + "." + f.k, ay = f.ayuda ? `<small>${f.ayuda}</small>` : "";
   if (f.t === "text") return `<div class="campo"><label><span>${f.n}</span><input type="text" data-r="${r}" value="${esc(v)}"></label>${ay}</div>`;
   if (f.t === "num") return `<div class="campo"><label><span>${f.n}</span><input type="number" step="${f.paso || 1}" data-r="${r}" data-num value="${esc(v)}"></label>${ay}</div>`;
-  if (f.t === "color") return `<div class="campo"><label><span>${f.n}</span><input type="color" data-r="${r}" value="${esc(v || "#2A2A2A")}"></label>${ay}</div>`;
+  if (f.t === "color") return `<div class="campo"><label><span>${f.n}</span><input type="color" data-r="${r}" value="${esc(v || "#173B2F")}"></label>${ay}</div>`;
   if (f.t === "bool") return `<label class="casilla"><input type="checkbox" data-r="${r}" data-bool${v ? " checked" : ""}>${f.n}</label>`;
   if (f.t === "sel") return `<div class="campo"><label><span>${f.n}</span><select data-r="${r}">${f.op().map(([a, b]) => `<option value="${esc(a)}"${a === v ? " selected" : ""}>${esc(b)}</option>`).join("")}</select></label>${ay}</div>`;
   if (f.t === "bi" || f.t === "biarea") {

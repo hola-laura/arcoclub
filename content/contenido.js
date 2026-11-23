@@ -2,7 +2,7 @@
 window.CONTENIDO_BASE = {
  "general": {
   "nombre": "Arco Club",
-  "color": "#2A2A2A",
+  "color": "#173B2F",
   "direccion": "Calle de Toledo, 139",
   "cp": "28005 Madrid",
   "lat": 40.4046,
@@ -23,8 +23,8 @@ window.CONTENIDO_BASE = {
  },
  "portada": {
   "titulo": {
-   "es": "Casas con carácter en Madrid",
-   "en": "Homes with character in Madrid"
+   "es": "Cruza el umbral de tu próxima casa",
+   "en": "Step through the door of your next home"
   },
   "texto": {
    "es": "Arco Club es una agencia pequeña de la calle de Toledo. Llevamos pocas viviendas a la vez para conocer bien cada una: la casa, el edificio y el barrio.",
@@ -44,8 +44,8 @@ window.CONTENIDO_BASE = {
    "en": "A home is also its street. This is what we tell people about each area when we show it."
   },
   "tituloVender": {
-   "es": "¿Vendes tu casa en Madrid?",
-   "en": "Selling your home in Madrid?"
+   "es": "¿Vendes tu casa? Te abrimos la puerta.",
+   "en": "Selling your home? We open the door."
   },
   "textoVender": {
    "es": "Cuéntanos dónde está y te decimos, sin compromiso, por cuánto creemos que se puede vender.",

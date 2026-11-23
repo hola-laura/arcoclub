@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Arco Club. Casas en Madrid</title>
 <meta name="description" content="Agencia inmobiliaria en Madrid. Pocas viviendas, bien conocidas.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F1ECE1'/%3E%3Cpath d='M9 26V15a7 7 0 0 1 14 0v11' fill='none' stroke='%23B9A26A' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23173B2F'/%3E%3Cpath d='M8 27V15a8 8 0 0 1 16 0v12h-5V15.500a4.500 4.500 0 0 0-9 0V27z' fill='%23F6F1E7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --cal:#EFEDE6; --blanco:#FFFFFF; --tinta:#111111; --azul:#1B3B8C; --granito:#62666E;
@@ -241,46 +241,56 @@ body.portada .nav a:hover{border-color:#fff}
 .pie-web .logo{font-size:clamp(34px,4.4vw,60px);color:#fff}
 main>.w:last-child{padding-bottom:clamp(56px,8vw,112px)}
 
-/* marca de Arco Club: crema, carbón y dorado; tipografía fina en mayúsculas espaciadas */
-:root{--cal:#FBF9F4;--tinta:#2A2A2A;--azul:#2A2A2A;--oro:#B9A26A;--linea:#E4DED0;--piedra:#F1ECE1;--granito:#6B6862;--serif:"Jost",system-ui,sans-serif}
-h1,h2,h3{font-weight:300;letter-spacing:.01em}
+/* marca afinada: la A es el arco, serif con carácter, verde botella, ocre y crema */
+:root{--cal:#F6F1E7;--tinta:#1B211D;--azul:#173B2F;--oro:#C08A2B;--linea:#DDD4C2;--piedra:#EBE4D6;--granito:#5F645D;--serif:"Fraunces",Georgia,serif}
+h1,h2,h3{font-weight:400;letter-spacing:-.015em;font-variation-settings:"opsz" 144}
 .cab{background:var(--cal)}
-.logo{letter-spacing:0;gap:0}
-.logo svg.lg{width:auto;height:52px}
-.pie-web .logo svg.lg{height:clamp(90px,10vw,130px)}
-.nav{font-family:var(--serif);text-transform:uppercase;letter-spacing:.16em;font-size:12.5px}
-.nav a:hover,.nav a[aria-current]{border-color:var(--oro)}
-body.portada .nav a:hover{border-color:var(--oro)}
-.idioma{font-family:var(--serif);letter-spacing:.12em}
-.btn{font-family:var(--serif);text-transform:uppercase;letter-spacing:.18em;font-size:13px;font-weight:400;padding:17px 28px}
-.btn:hover,.busca .btn:hover{background:var(--oro);color:#fff}
-.busca .btn{background:var(--tinta)}
+.logo{letter-spacing:0;gap:0;color:var(--azul);text-transform:none}
+.casa .pend{right:auto;top:auto;left:12px;bottom:12px;border-radius:999px}
+body.portada .cab .logo{color:var(--cal)}
+.logo svg.lg{width:auto;height:34px;overflow:visible}
+.pie-web .logo{color:var(--cal)}
+.pie-web .logo svg.lg{height:clamp(54px,7vw,96px)}
+.nav{font-size:15.5px;letter-spacing:0}
+.nav a:hover,.nav a[aria-current],body.portada .nav a:hover{border-color:var(--oro)}
+.idioma{border-radius:999px;padding:6px 12px}
+.btn{background:var(--azul);border-radius:999px;font:500 16px var(--sans);letter-spacing:0;padding:15px 28px}
+.btn:hover,.busca .btn:hover{background:var(--oro);color:var(--tinta)}
 :focus-visible{outline-color:var(--oro)}
-.foto,.lugar{background:#2B2926}
-.hero2{background:#1E1D1B}
-.hero2 .fondo::after{background:linear-gradient(rgba(20,19,17,.55),rgba(20,19,17,.1) 36%,rgba(20,19,17,.8))}
-.hero2 h1{text-transform:uppercase;letter-spacing:.1em;font-size:clamp(32px,4.6vw,68px);line-height:1.15;max-width:14em}
-.hero2 h1::before{content:"";display:block;width:64px;height:1.5px;background:var(--oro);margin-bottom:28px}
-.sec-cab h2,.vende h2,.pag-cab h1{text-transform:uppercase;letter-spacing:.12em;line-height:1.2}
-.sec-cab h2{font-size:clamp(24px,2.6vw,36px)}
-.sec-cab h2::after{content:"";display:block;width:48px;height:1.5px;background:var(--oro);margin-top:18px}
-.pag-cab h1{font-size:clamp(30px,4vw,56px)}
-.vende h2{font-size:clamp(26px,3vw,42px)}
-.ficha-top h1{font-size:clamp(28px,3.4vw,46px);letter-spacing:.02em}
-.casa .precio{font:400 24px/1.1 var(--serif);letter-spacing:.02em}
-.estado{background:var(--oro);color:#fff}
-.lugar b{font:300 clamp(20px,2vw,28px)/1.1 var(--serif);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
-.vende{background:#1E1D1B}
-.btn.claro{color:var(--tinta)}.btn.claro:hover{background:var(--oro);color:#fff}
-.rasgos b{font:300 30px/1 var(--serif)}
-.agente b{font:400 19px/1.1 var(--serif)}
-.caja h2,.ficha h2{letter-spacing:.02em}
-.plano .rot text{font:400 12px var(--serif);fill:var(--granito);opacity:1;letter-spacing:.08em}
-.plano g[fill="none"]{stroke:var(--oro)}
-.pasos li::before{color:var(--oro)}
-.pie-web{background:#1A1917}
+.foto,.lugar{background:var(--azul)}
+.foto svg,.lugar svg{opacity:1}
+.pend{background:rgba(0,0,0,.3)}
+.hero2{background:#102A21}
+.hero2 .fondo svg{opacity:.55}
+.hero2 .fondo::after{background:linear-gradient(rgba(12,30,23,.5),rgba(12,30,23,.05) 36%,rgba(12,30,23,.82))}
+.hero2 h1{font-size:clamp(46px,7vw,108px);font-weight:300;line-height:.98;max-width:10em}
+.hero2 p{font-size:19px}
+.busca{border-radius:999px;overflow:hidden;padding-left:14px}
+.busca .btn{background:var(--azul);border-radius:0}
+.sec-cab h2{font-size:clamp(36px,4.4vw,60px)}
+.pag-cab h1{font-size:clamp(42px,6vw,88px);font-weight:300;color:var(--azul)}
+.ficha-top h1{font-size:clamp(34px,4.4vw,60px);font-weight:300}
+.casa .foto{border-radius:999px 999px 0 0;aspect-ratio:4/5}
+.casa .precio{font:400 28px/1.1 var(--serif)}
+.estado{background:var(--oro);color:var(--tinta);left:50%;transform:translateX(-50%);bottom:14px;border-radius:999px}
+.gris{background:var(--piedra)}
+.lugar{border-radius:14px}
+.lugar b{font:400 clamp(26px,2.6vw,40px)/1.05 var(--serif);text-transform:none;letter-spacing:-.01em;margin-bottom:4px}
+.vende{background:var(--azul)}
+.vende .foto{background:#102A21}
+.vende h2{font-size:clamp(38px,4.6vw,66px);font-weight:300}
+.btn.claro{background:var(--cal);color:var(--azul)}.btn.claro:hover{background:var(--oro);color:var(--tinta)}
+.caja{background:#FCFAF5;border-radius:14px}
+select,input,textarea{border-radius:8px}
+.rasgos b{font:400 32px/1 var(--serif)}
+.agente b{font:500 20px/1.1 var(--serif)}
+.plano{background:var(--piedra);border-radius:14px}
+.plano .rot text{font:italic 400 13px var(--serif);fill:var(--azul);opacity:.75;letter-spacing:0}
+.pasos li::before{color:var(--oro);font-weight:300}
+.pie-web{background:var(--azul)}
+.galeria .foto{border-radius:14px}
 @media (max-width:900px){
-  .busca{grid-template-columns:1fr}.busca label{border-right:0;border-bottom:1px solid var(--linea)}.busca .btn{padding:16px}
+  .busca{grid-template-columns:1fr;border-radius:18px;padding-left:0}.busca label{border-right:0;border-bottom:1px solid var(--linea)}.busca .btn{padding:16px}
   .lugares{grid-template-columns:1fr 1fr}.vende{grid-template-columns:1fr}.vende .foto{min-height:240px}
   body.portada .nav{color:var(--tinta)}
   .rasgos div{padding-right:20px;margin-right:20px}
@@ -308,7 +318,7 @@ body.portada .nav a:hover{border-color:var(--oro)}
 </head>
 <body>
 <header class="cab"><div class="w">
-  <a class="logo" href="#inicio" aria-label="Arco Club, inicio"><svg class="lg" viewBox="0 -2 122 60" aria-hidden="true"><path d="M30 15Q61 -7 92 15" fill="none" stroke="var(--oro)" stroke-width="1.3"/><path d="M7 40 16 18l9 22" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="37" y="40" font-family="Jost,sans-serif" font-weight="300" font-size="24" letter-spacing="10" fill="currentColor">RCO</text><path d="M30 46v9M92 46v9" stroke="var(--oro)" stroke-width="1.3"/><text x="62" y="55" text-anchor="middle" font-family="Jost,sans-serif" font-weight="400" font-size="9" letter-spacing="5" fill="currentColor" opacity=".7">CLUB</text></svg></a>
+  <a class="logo" href="#inicio" aria-label="Arco Club, inicio"><svg class="lg" viewBox="0 0 232 46" aria-hidden="true"><path d="M0 43V18a16 16 0 0 1 32 0v25h-10V19a9.5 9.5 0 0 0-19 0v24z" fill="currentColor"/><text x="40" y="43" font-family="Fraunces,Georgia,serif" font-weight="500" font-size="56" letter-spacing="1" fill="currentColor" style="font-variation-settings:'opsz' 144">RCO</text><text x="172" y="43" font-family="Fraunces,Georgia,serif" font-style="italic" font-weight="400" font-size="24" fill="var(--oro)">Club</text></svg></a>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav"></button>
   <nav class="nav" id="nav"></nav>
 </div></header>
@@ -375,23 +385,21 @@ const eur = n => lang === "es" ? new Intl.NumberFormat("de-DE").format(n) + " �
 const casas = () => (C.propiedades || []).filter(p => p.visible !== false);
 const barrio = id => (C.barrios || []).find(b => b.id === id);
 
-// Dibujo de fachada madrileña para las viviendas que aún no tienen foto.
+// Dibujo de arcada (los soportales de Madrid) para lo que aún no tiene foto.
 function fachada(semilla, entera) {
   let h = 0; for (const c of String(semilla)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
-  const c = 3 + h % 2, f = 4, W = c * 100, H = f * 130 + 60; let s = `<path d="M0 34H${W}M0 44H${W}" stroke="#fff" stroke-width="2"/>`;
-  for (let y = 0; y < f; y++) for (let x = 0; x < c; x++) {
-    const X = x * 100 + 26, Y = 70 + y * 130, on = (x * 7 + y * 13 + h) % 5 === 0;
-    s += `<rect x="${X}" y="${Y}" width="48" height="84" fill="${on ? "#fff" : "none"}" stroke="#fff" stroke-width="1.6"/><path d="M${X + 24} ${Y}v84M${X} ${Y + 28}h48" stroke="#fff"/><path d="M${X - 12} ${Y + 84}h72M${X - 12} ${Y + 52}h72M${X - 10} ${Y - 8}h68" stroke="#fff" stroke-width="2"/>`;
-    for (let i = 0; i <= 8; i++) s += `<path d="M${X - 12 + i * 9} ${Y + 52}v32" stroke="#fff"/>`;
-  }
-  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="${entera ? "xMidYMax meet" : "xMidYMin slice"}" aria-hidden="true">${s}</svg>`;
+  const n = 3 + h % 2, w = 110, W = n * w + 40, H = 300, sol = h % n; let s = "";
+  for (let i = 0; i < n; i++) { const x = 20 + i * w, r = (w - 18) / 2, cx = x + w / 2;
+    s += `<path d="M${cx - r} ${H}V${150}a${r} ${r} 0 0 1 ${2 * r} 0V${H}z" fill="${i === sol ? "var(--oro)" : "none"}" stroke="#F6F1E7" stroke-width="1.6"/><path d="M${cx - r + 12} ${H}V${150}a${r - 12} ${r - 12} 0 0 1 ${2 * (r - 12)} 0V${H}" fill="none" stroke="#F6F1E7" stroke-opacity=".5"/>`; }
+  s += `<path d="M0 ${H - 1}H${W}M0 78H${W}M0 66H${W}" stroke="#F6F1E7" stroke-width="1.6"/>`;
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="${entera ? "xMidYMax meet" : "xMidYMax slice"}" aria-hidden="true">${s}</svg>`;
 }
 // Plano dibujado de Madrid. Sitúa cada punto por su latitud y longitud; lo que queda fuera se pega al borde.
 function plano(puntos, radio) {
   const X = g => (g + 3.80) / 0.28 * 600, Y = l => (40.50 - l) / 0.14 * 400, pt = (g, l) => X(g).toFixed(0) + " " + Y(l).toFixed(0);
   const linea = a => "M" + a.map(p => pt(p[0], p[1])).join("L");
   const pines = puntos.map(p => { const fuera = p.lng > -3.53 || p.lat > 40.495, x = Math.max(20, Math.min(580, X(p.lng))), y = Math.max(20, Math.min(380, Y(p.lat))), izq = x > 430;
-    return `<a href="${esc(p.href || "#")}" class="pin">${radio && !fuera ? `<circle cx="${x}" cy="${y}" r="${radio}" fill="var(--oro)" fill-opacity=".2" stroke="var(--oro)"/>` : ""}<circle cx="${x}" cy="${y}" r="5.5" fill="var(--oro)" stroke="#2A2A2A" stroke-width="1.2"/><text x="${x + (izq ? -11 : 11) * (radio && !fuera ? radio / 9 : 1)}" y="${y + 5}" text-anchor="${izq ? "end" : "start"}">${esc(p.nombre)}${fuera ? " ↗" : ""}</text></a>`; }).join("");
+    return `<a href="${esc(p.href || "#")}" class="pin">${radio && !fuera ? `<circle cx="${x}" cy="${y}" r="${radio}" fill="var(--oro)" fill-opacity=".2" stroke="var(--oro)"/>` : ""}<circle cx="${x}" cy="${y}" r="5.5" fill="var(--oro)" stroke="#173B2F" stroke-width="1.2"/><text x="${x + (izq ? -11 : 11) * (radio && !fuera ? radio / 9 : 1)}" y="${y + 5}" text-anchor="${izq ? "end" : "start"}">${esc(p.nombre)}${fuera ? " ↗" : ""}</text></a>`; }).join("");
   return `<svg class="plano" viewBox="0 0 600 400" role="img" aria-label="${lang === "es" ? "Plano orientativo de Madrid" : "Sketch map of Madrid"}"><g fill="none" stroke="var(--oro)">
     <path d="${linea([[-3.745, 40.475], [-3.728, 40.435], [-3.722, 40.415], [-3.715, 40.398], [-3.700, 40.385], [-3.680, 40.368]])}" stroke-width="9" stroke-opacity=".16" stroke-linecap="round"/>
     <ellipse cx="${X(-3.693)}" cy="${Y(40.432)}" rx="76" ry="128" stroke-opacity=".35" stroke-dasharray="2 7"/>
@@ -556,7 +564,7 @@ function marco() {
   $("#menuBtn").textContent = x.menu;
   $("#idioma").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; try { localStorage.setItem("arco-lang", lang); } catch (e) {} pintar(true); });
   $("#pie").innerHTML = `<div class="w"><div class="g">
-    <div><a class="logo" href="#inicio"><svg class="lg" viewBox="0 -2 122 60" aria-hidden="true"><path d="M30 15Q61 -7 92 15" fill="none" stroke="var(--oro)" stroke-width="1.3"/><path d="M7 40 16 18l9 22" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="37" y="40" font-family="Jost,sans-serif" font-weight="300" font-size="24" letter-spacing="10" fill="currentColor">RCO</text><path d="M30 46v9M92 46v9" stroke="var(--oro)" stroke-width="1.3"/><text x="62" y="55" text-anchor="middle" font-family="Jost,sans-serif" font-weight="400" font-size="9" letter-spacing="5" fill="currentColor" opacity=".7">CLUB</text></svg></a></div>
+    <div><a class="logo" href="#inicio"><svg class="lg" viewBox="0 0 232 46" aria-hidden="true"><path d="M0 43V18a16 16 0 0 1 32 0v25h-10V19a9.5 9.5 0 0 0-19 0v24z" fill="currentColor"/><text x="40" y="43" font-family="Fraunces,Georgia,serif" font-weight="500" font-size="56" letter-spacing="1" fill="currentColor" style="font-variation-settings:'opsz' 144">RCO</text><text x="172" y="43" font-family="Fraunces,Georgia,serif" font-style="italic" font-weight="400" font-size="24" fill="var(--oro)">Club</text></svg></a></div>
     <ul>${en.map(([h, n]) => `<li><a href="#${h}">${n}</a></li>`).join("")}</ul>
     <ul><li>${esc(g.direccion)}</li><li>${esc(g.cp)}</li>${g.telefono ? `<li><a href="tel:${esc(String(g.telefono).replace(/\s/g, ""))}">${esc(g.telefono)}</a></li>` : ""}${g.correo ? `<li><a href="mailto:${esc(g.correo)}">${esc(g.correo)}</a></li>` : ""}${g.idealista ? `<li><a href="${esc(g.idealista)}" target="_blank" rel="noopener">${x.tambien}</a></li>` : ""}</ul>
   </div><div class="fin"><span>© ${new Date().getFullYear()} Arco Club. ${x.derechos}</span><a href="#privacidad">${x.privacidad}</a></div></div>`;
