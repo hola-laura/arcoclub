@@ -192,7 +192,7 @@ body.portada .nav a:hover{border-color:#fff}
 .hero2 p{max-width:34em;margin-top:18px;font-size:18px;opacity:.92}
 .busca{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;background:#fff;color:var(--tinta);margin-top:clamp(28px,4vw,48px)}
 .busca label{padding:14px 20px 12px;border-right:1px solid var(--linea);font-size:12.5px;color:var(--granito)}
-.busca select{border:0;padding:4px 0 0;margin:0;font-size:16.5px;background:none;font-weight:500}
+.busca select{border:0;padding:4px 0 0;margin:0;font-size:16.5px;background-color:transparent;font-weight:500}
 .busca .btn{padding:0 44px;background:var(--tinta)}
 .busca .btn:hover{background:var(--azul)}
 .sec-cab h2{font-size:clamp(34px,4vw,54px)}
@@ -289,6 +289,8 @@ select,input,textarea{border-radius:8px}
 .pasos li::before{color:var(--oro);font-weight:300}
 .pie-web{background:var(--azul)}
 .galeria .foto{border-radius:14px}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.500l5 5 5-5' fill='none' stroke='%231B211D' stroke-width='1.500' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;background-size:12px 8px;padding-right:48px;text-overflow:ellipsis}
+.busca select{background-color:transparent;background-position:right 4px center;padding-right:28px}
 @media (max-width:900px){
   .busca{grid-template-columns:1fr;border-radius:18px;padding-left:0}.busca label{border-right:0;border-bottom:1px solid var(--linea)}.busca .btn{padding:16px}
   .lugares{grid-template-columns:1fr 1fr}.vende{grid-template-columns:1fr}.vende .foto{min-height:240px}
