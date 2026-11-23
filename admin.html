@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Panel de arco</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cal:#F5F6F3;--blanco:#fff;--tinta:#141822;--azul:#1B3B8C;--granito:#62666E;--linea:#D9DBD6;--piedra:#E9EAE5;--albero:#E2A93B;--rojo:#A3261E;--verde:#1E6B3C;--serif:"Fraunces",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cal);color:var(--tinta);font:400 16px/1.5 var(--sans)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
+button{font:500 15px var(--sans);cursor:pointer;color:inherit}
+:focus-visible{outline:3px solid var(--albero);outline-offset:2px}
+.btn{background:var(--azul);color:#fff;border:0;border-radius:2px;padding:11px 20px}
+.btn:disabled{opacity:.45;cursor:default}
+.btn2{background:var(--blanco);border:1px solid #AEB1AC;border-radius:2px;padding:8px 14px}
+.btn3{background:none;border:0;padding:6px 8px;color:var(--granito);text-decoration:underline;text-underline-offset:3px}
+.btn3.peligro{color:var(--rojo)}
+
+.entrada{min-height:100vh;display:grid;place-items:center;padding:24px}
+.entrada form{background:var(--blanco);border:1px solid var(--linea);padding:36px;width:min(420px,100%)}
+.entrada h1{font-size:34px;color:var(--azul);margin-bottom:8px}
+.entrada p{color:var(--granito);margin:0 0 20px}
+
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}
+.lado{background:var(--tinta);color:#fff;padding:24px 16px;position:sticky;top:0;height:100vh;overflow:auto}
+.lado .marca{font:400 30px var(--serif);padding:0 10px 20px;display:block}
+.lado button{display:flex;justify-content:space-between;width:100%;text-align:left;background:none;border:0;color:#fff;padding:10px;border-radius:2px;font-size:16px;opacity:.75}
+.lado button:hover{opacity:1}
+.lado button[aria-current]{background:var(--azul);opacity:1}
+.lado button i{font-style:normal;color:var(--albero)}
+.lado .fuera{margin-top:24px;padding:16px 10px 0;border-top:1px solid rgba(255,255,255,.2);display:grid;gap:10px;font-size:15px}
+.lado .fuera a{color:#fff}
+.barra{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--cal) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea);padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.barra h1{font-size:30px}
+.barra .der{display:flex;align-items:center;gap:14px}
+.estado{font-size:14.5px;color:var(--granito)}
+.estado.mal{color:var(--rojo);font-weight:500}.estado.bien{color:var(--verde);font-weight:500}
+.cuerpo{padding:28px clamp(20px,4vw,48px) 96px;max-width:980px}
+.demo{background:#FFF6DC;border:1px solid var(--albero);padding:12px 16px;margin-bottom:24px;font-size:15px}
+.ayuda{color:var(--granito);margin:0 0 24px;max-width:44em}
+
+.campo{margin-bottom:18px}
+.campo>span,.campo>label>span{display:block;font-weight:500;font-size:14.5px;margin-bottom:6px}
+.campo small{display:block;color:var(--granito);font-size:13.5px;margin-top:4px}
+input[type=text],input[type=number],input[type=password],input[type=url],textarea,select{width:100%;font:400 16px var(--sans);color:var(--tinta);background:var(--blanco);border:1px solid #AEB1AC;border-radius:2px;padding:10px 12px}
+textarea{resize:vertical;min-height:84px}
+input[type=color]{width:56px;height:40px;padding:2px;border:1px solid #AEB1AC;background:#fff}
+.bi{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bi label{position:relative;display:block}
+.bi label em{position:absolute;right:8px;top:8px;font:600 11.5px var(--sans);color:var(--granito);background:var(--piedra);padding:1px 6px;pointer-events:none}
+.fila{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0 16px}
+.casilla{display:flex;align-items:center;gap:10px;font-weight:500;font-size:15px;padding:8px 0}
+.casilla input{width:18px;height:18px}
+.grupo{border-top:1px solid var(--linea);padding-top:20px;margin-top:8px}
+.grupo>h3{font-size:22px;margin-bottom:14px}
+
+.lista{display:grid;gap:10px;margin-bottom:14px}
+.item{background:var(--blanco);border:1px solid var(--linea)}
+.item>header{display:flex;align-items:center;gap:12px;padding:10px 14px}
+.item>header .abre{flex:1;display:flex;align-items:center;gap:14px;background:none;border:0;text-align:left;padding:4px 0;min-width:0}
+.item>header .mini{width:56px;height:42px;background:var(--azul);object-fit:cover;flex:none}
+.item>header b{font:400 19px var(--serif);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item>header span{color:var(--granito);font-size:14px}
+.item>header .t{min-width:0}
+.item .dentro{padding:18px 18px 8px;border-top:1px solid var(--linea)}
+.item .orden{display:flex;gap:2px}
+.item .orden button{background:none;border:1px solid var(--linea);width:32px;height:32px;border-radius:2px}
+.item .orden button:disabled{opacity:.3}
+.borrar-fila{display:flex;justify-content:flex-end;gap:6px;align-items:center;padding:0 0 10px;font-size:14.5px}
+
+.fotos{display:flex;flex-wrap:wrap;gap:10px}
+.fotos figure{margin:0;width:132px;position:relative}
+.fotos img{width:132px;height:99px;object-fit:cover;background:var(--piedra);display:block}
+.fotos figcaption{display:flex;justify-content:space-between;font-size:13px}
+.fotos figcaption button{padding:4px 2px;font-size:13px}
+.subir{width:132px;height:99px;border:1.5px dashed #AEB1AC;background:none;display:grid;place-items:center;text-align:center;font-size:14px;color:var(--granito);padding:8px}
+.subir:hover{border-color:var(--azul);color:var(--azul)}
+@media (max-width:800px){.app{grid-template-columns:1fr}.lado{position:static;height:auto}.bi{grid-template-columns:1fr}.barra h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div id="raiz"></div>
+<script src="config.js"></script>
+<script src="content/contenido.js"></script>
+<script>
+(() => {
+const API = (window.CONFIG || {}).API_URL || "";
+const $ = (s, r = document) => r.querySelector(s);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const copia = o => JSON.parse(JSON.stringify(o));
+const BASE = window.CONTENIDO_BASE;
+let clave = sessionStorage.getItem("arco-clave") || "";
+let C = null, sucio = new Set(), seccion = "propiedades", abierto = null;
+
+/* ---------- qué se puede editar ---------- */
+const TIPOS = [["piso", "Piso"], ["duplex", "Dúplex"], ["atico", "Ático"], ["chalet", "Casa o chalet"], ["estudio", "Estudio"], ["local", "Local"], ["otro", "Otro"]];
+const barriosOp = () => (C.barrios || []).map(b => [b.id, b.nombre]);
+const S = {
+  propiedades: { nombre: "Viviendas", ayuda: "Cada vivienda tiene su ficha en la web. La primera marcada como destacada sale en grande en la portada.", lista: true, nuevo: "Añadir vivienda",
+    titulo: p => (p.titulo || {}).es || "Vivienda nueva", sub: p => [p.ref, p.precio ? new Intl.NumberFormat("de-DE").format(p.precio) + " €" : "", p.visible === false ? "Oculta" : "", p.estado !== "disponible" ? p.estado : ""].filter(Boolean).join(" · "), foto: p => (p.fotos || [])[0],
+    plantilla: () => ({ id: "", ref: "", visible: true, destacada: false, estado: "disponible", operacion: "venta", tipo: "piso", titulo: { es: "", en: "" }, precio: null, m2: null, parcela: null, hab: null, banos: null, planta: { es: "", en: "" }, ascensor: false, exterior: true, garaje: false, barrio: (C.barrios[0] || {}).id || "", calle: "", descripcion: { es: "", en: "" }, fotos: [], lat: null, lng: null, enlace: "" }),
+    campos: [
+      { k: "titulo", n: "Título", t: "bi" },
+      { fila: [{ k: "precio", n: "Precio (€)", t: "num" }, { k: "ref", n: "Referencia", t: "text" }, { k: "tipo", n: "Tipo", t: "sel", op: () => TIPOS }, { k: "barrio", n: "Barrio", t: "sel", op: barriosOp }] },
+      { fila: [{ k: "m2", n: "Superficie (m²)", t: "num" }, { k: "parcela", n: "Parcela (m²)", t: "num" }, { k: "hab", n: "Dormitorios", t: "num" }, { k: "banos", n: "Baños", t: "num" }] },
+      { k: "planta", n: "Planta", t: "bi", ayuda: "Por ejemplo: 4.ª planta / 4th floor. En una casa, déjalo vacío." },
+      { fila: [{ k: "ascensor", n: "Ascensor", t: "bool" }, { k: "exterior", n: "Exterior", t: "bool" }, { k: "garaje", n: "Garaje incluido", t: "bool" }] },
+      { k: "descripcion", n: "Descripción", t: "biarea" },
+      { k: "fotos", n: "Fotos", t: "fotos", ayuda: "La primera es la principal. Si no hay ninguna, la web enseña un dibujo de fachada." },
+      { fila: [{ k: "estado", n: "Estado", t: "sel", op: () => [["disponible", "Disponible"], ["reservada", "Reservada"], ["vendida", "Vendida"]] }, { k: "visible", n: "Se ve en la web", t: "bool" }, { k: "destacada", n: "Destacada en la portada", t: "bool" }] },
+      { fila: [{ k: "lat", n: "Latitud", t: "num", paso: "any" }, { k: "lng", n: "Longitud", t: "num", paso: "any" }], ayuda: "Para el mapa. La web solo enseña un círculo con la zona aproximada. En Google Maps: botón derecho sobre el sitio y copia los dos números." },
+      { k: "enlace", n: "Enlace al anuncio en Idealista", t: "text" },
+      { k: "calle", n: "Calle (solo para ti, no se publica)", t: "text" },
+      { k: "id", n: "Dirección web de la ficha", t: "text", ayuda: "Solo minúsculas y guiones, por ejemplo piso-oviedo. Si la cambias, los enlaces antiguos dejan de funcionar." }
+    ] },
+  barrios: { nombre: "Barrios", ayuda: "Cada barrio tiene su página con el texto, el mapa y sus viviendas.", lista: true, nuevo: "Añadir barrio",
+    titulo: b => b.nombre || "Barrio nuevo", sub: b => (b.zona || {}).es || "", foto: b => b.foto,
+    plantilla: () => ({ id: "", nombre: "", zona: { es: "", en: "" }, texto: { es: "", en: "" }, foto: "", lat: null, lng: null }),
+    campos: [
+      { k: "nombre", n: "Nombre", t: "text" }, { k: "zona", n: "Distrito o zona", t: "bi" }, { k: "texto", n: "Texto", t: "biarea" }, { k: "foto", n: "Foto", t: "foto" },
+      { fila: [{ k: "lat", n: "Latitud", t: "num", paso: "any" }, { k: "lng", n: "Longitud", t: "num", paso: "any" }] },
+      { k: "id", n: "Dirección web del barrio", t: "text", ayuda: "Solo minúsculas y guiones. Las viviendas se enlazan a su barrio por este nombre." }
+    ] },
+  portada: { nombre: "Portada", campos: [
+      { k: "titulo", n: "Titular", t: "bi" }, { k: "texto", n: "Texto de entrada", t: "biarea" },
+      { k: "foto", n: "Foto grande de la portada", t: "foto", ayuda: "Si la dejas vacía, sale la primera foto de la vivienda destacada." },
+      { k: "tituloViviendas", n: "Título de las viviendas", t: "bi" }, { k: "tituloBarrios", n: "Título de los barrios", t: "bi" }, { k: "textoBarrios", n: "Texto de los barrios", t: "biarea" },
+      { k: "tituloVender", n: "Título para vender", t: "bi" }, { k: "fotoVender", n: "Foto del bloque de vender", t: "foto" }, { k: "textoVender", n: "Texto para vender", t: "biarea" } ] },
+  vender: { nombre: "Vender", campos: [
+      { k: "titulo", n: "Título", t: "bi" }, { k: "texto", n: "Texto", t: "biarea" },
+      { k: "pasos", n: "Pasos", t: "sub", nuevo: "Añadir paso", plantilla: () => ({ titulo: { es: "", en: "" }, texto: { es: "", en: "" } }), titulo: s => (s.titulo || {}).es || "Paso nuevo", campos: [{ k: "titulo", n: "Título", t: "bi" }, { k: "texto", n: "Texto", t: "biarea" }] },
+      { k: "tituloForm", n: "Título del formulario", t: "bi" }, { k: "textoForm", n: "Texto del formulario", t: "bi" } ] },
+  sobre: { nombre: "Sobre arco", campos: [
+      { k: "titulo", n: "Título", t: "bi" }, { k: "texto", n: "Texto", t: "biarea" },
+      { k: "equipo", n: "Equipo", t: "sub", nuevo: "Añadir persona", plantilla: () => ({ nombre: "", cargo: { es: "", en: "" }, texto: { es: "", en: "" }, foto: "" }), titulo: e => e.nombre || "Persona nueva", campos: [{ k: "nombre", n: "Nombre", t: "text" }, { k: "cargo", n: "Cargo", t: "bi" }, { k: "texto", n: "Presentación", t: "biarea" }, { k: "foto", n: "Foto", t: "foto" }] } ] },
+  general: { nombre: "Datos y contacto", campos: [
+      { fila: [{ k: "direccion", n: "Dirección", t: "text" }, { k: "cp", n: "Código postal y ciudad", t: "text" }] },
+      { fila: [{ k: "telefono", n: "Teléfono", t: "text" }, { k: "correo", n: "Correo", t: "text" }] },
+      { k: "horario", n: "Horario", t: "bi" },
+      { fila: [{ k: "instagram", n: "Instagram", t: "text" }, { k: "idealista", n: "Página en Idealista", t: "text" }] },
+      { fila: [{ k: "lat", n: "Latitud de la oficina", t: "num", paso: "any" }, { k: "lng", n: "Longitud de la oficina", t: "num", paso: "any" }] },
+      { k: "descripcion", n: "Descripción para Google", t: "bi", ayuda: "Una frase. Es lo que sale debajo del título en los buscadores." },
+      { k: "color", n: "Color principal", t: "color" } ] },
+  legal: { nombre: "Privacidad", campos: [{ k: "privacidad", n: "Texto de privacidad", t: "biarea", alto: 320 }] }
+};
+const ORDEN = ["propiedades", "barrios", "portada", "vender", "sobre", "general", "legal"];
+
+/* ---------- guardar y cargar ---------- */
+const post = cuerpo => fetch(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ ...cuerpo, clave }) }).then(r => r.json());
+async function cargar() {
+  let remoto = {};
+  if (API) remoto = await fetch(API).then(r => r.json());
+  else { try { remoto = JSON.parse(localStorage.getItem("arco-demo")) || {}; } catch (e) {} }
+  C = Object.assign(copia(BASE), remoto);
+}
+async function guardarTodo() {
+  const b = $("#guardar"), e = $("#estado");
+  b.disabled = true; e.className = "estado"; e.textContent = "Guardando…";
+  try {
+    if (API) for (const k of [...sucio]) { const r = await post({ accion: "guardar", clave_seccion: k, datos: C[k] }); if (!r.ok) throw new Error(r.error || "red"); sucio.delete(k); }
+    else { localStorage.setItem("arco-demo", JSON.stringify(C)); sucio.clear(); }
+    e.className = "estado bien"; e.textContent = "Cambios guardados";
+  } catch (err) {
+    e.className = "estado mal";
+    e.textContent = err.message === "clave" ? "La contraseña ya no es válida. Vuelve a entrar." : err.name === "QuotaExceededError" ? "No cabe en este navegador: quita alguna foto subida en modo de prueba." : err.message === "tamano" ? "El contenido es demasiado grande para guardarlo." : "No se ha podido guardar. Comprueba la conexión y vuelve a pulsar Guardar.";
+  }
+  pintarLado(); b.disabled = !sucio.size;
+}
+function marcar() { sucio.add(seccion); const b = $("#guardar"), e = $("#estado"); if (b) b.disabled = false; if (e) { e.className = "estado"; e.textContent = "Cambios sin guardar"; } pintarLado(); }
+window.addEventListener("beforeunload", e => { if (sucio.size) { e.preventDefault(); e.returnValue = ""; } });
+
+/* ---------- fotos ---------- */
+function reducir(file) {
+  return new Promise((ok, mal) => {
+    const im = new Image(), url = URL.createObjectURL(file);
+    im.onload = () => { const m = API ? 2000 : 1100, k = Math.min(1, m / Math.max(im.width, im.height)), c = document.createElement("canvas"); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); URL.revokeObjectURL(url); ok(c.toDataURL("image/jpeg", API ? .85 : .7)); };
+    im.onerror = () => mal(new Error("imagen")); im.src = url;
+  });
+}
+async function subir(file) {
+  const data = await reducir(file);
+  if (!API) return data;
+  const r = await post({ accion: "subir", nombre: file.name.replace(/\.[^.]+$/, "") + ".jpg", datos: data.split(",")[1] });
+  if (!r.ok) throw new Error(r.error || "red");
+  return r.url;
+}
+function elegir(multiple) {
+  return new Promise(ok => { const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.multiple = !!multiple; i.onchange = () => ok([...i.files]); i.click(); });
+}
+
+/* ---------- campos ---------- */
+function campo(f, obj, ruta) {
+  if (f.fila) return `<div class="fila">${f.fila.map(x => campo(x, obj, ruta)).join("")}</div>${f.ayuda ? `<p class="campo" style="margin-top:-10px"><small>${f.ayuda}</small></p>` : ""}`;
+  const v = obj[f.k], r = ruta + "." + f.k, ay = f.ayuda ? `<small>${f.ayuda}</small>` : "";
+  if (f.t === "text") return `<div class="campo"><label><span>${f.n}</span><input type="text" data-r="${r}" value="${esc(v)}"></label>${ay}</div>`;
+  if (f.t === "num") return `<div class="campo"><label><span>${f.n}</span><input type="number" step="${f.paso || 1}" data-r="${r}" data-num value="${esc(v)}"></label>${ay}</div>`;
+  if (f.t === "color") return `<div class="campo"><label><span>${f.n}</span><input type="color" data-r="${r}" value="${esc(v || "#1B3B8C")}"></label>${ay}</div>`;
+  if (f.t === "bool") return `<label class="casilla"><input type="checkbox" data-r="${r}" data-bool${v ? " checked" : ""}>${f.n}</label>`;
+  if (f.t === "sel") return `<div class="campo"><label><span>${f.n}</span><select data-r="${r}">${f.op().map(([a, b]) => `<option value="${esc(a)}"${a === v ? " selected" : ""}>${esc(b)}</option>`).join("")}</select></label>${ay}</div>`;
+  if (f.t === "bi" || f.t === "biarea") {
+    const o = v || {}, el = (l) => f.t === "bi" ? `<input type="text" data-r="${r}.${l}" value="${esc(o[l])}" aria-label="${f.n} (${l === "es" ? "español" : "inglés"})">` : `<textarea data-r="${r}.${l}" aria-label="${f.n} (${l === "es" ? "español" : "inglés"})"${f.alto ? ` style="min-height:${f.alto}px"` : ""}>${esc(o[l])}</textarea>`;
+    return `<div class="campo"><span>${f.n}</span><div class="bi"><label><em>ES</em>${el("es")}</label><label><em>EN</em>${el("en")}</label></div>${ay}</div>`;
+  }
+  if (f.t === "foto") return `<div class="campo"><span>${f.n}</span><div class="fotos">${v ? `<figure><img src="${esc(v)}" alt=""><figcaption><span></span><button class="btn3 peligro" data-quitar="${r}">Quitar</button></figcaption></figure>` : `<button type="button" class="subir" data-subir="${r}">Subir foto</button>`}</div>${ay}</div>`;
+  if (f.t === "fotos") { const a = v || []; return `<div class="campo"><span>${f.n}</span><div class="fotos">${a.map((u, i) => `<figure><img src="${esc(u)}" alt=""><figcaption>${i ? `<button class="btn3" data-primera="${r}.${i}">Principal</button>` : "<span>Principal</span>"}<button class="btn3 peligro" data-quitar="${r}.${i}">Quitar</button></figcaption></figure>`).join("")}<button type="button" class="subir" data-subir="${r}" data-varias>Subir fotos</button></div>${ay}</div>`; }
+  if (f.t === "sub") { const a = v || []; return `<div class="grupo"><h3>${f.n}</h3><div class="lista">${a.map((it, i) => item(f, it, r + "." + i, i, a.length, true)).join("")}</div><button type="button" class="btn2" data-nuevo="${r}">${f.nuevo}</button></div><div style="height:22px"></div>`; }
+  return "";
+}
+function item(def, it, ruta, i, total, siempre) {
+  const ab = siempre || abierto === ruta, foto = def.foto ? def.foto(it) : null;
+  return `<article class="item"><header>
+    ${siempre ? `<div class="abre"><div class="t"><b>${esc(def.titulo(it))}</b></div></div>` : `<button type="button" class="abre" data-abrir="${ruta}" aria-expanded="${ab}">${def.foto ? (foto ? `<img class="mini" src="${esc(foto)}" alt="">` : `<span class="mini"></span>`) : ""}<div class="t"><b>${esc(def.titulo(it))}</b><span>${esc(def.sub ? def.sub(it) : "")}</span></div></button>`}
+    <div class="orden"><button type="button" data-mover="${ruta}" data-d="-1" aria-label="Subir"${i ? "" : " disabled"}>↑</button><button type="button" data-mover="${ruta}" data-d="1" aria-label="Bajar"${i < total - 1 ? "" : " disabled"}>↓</button></div></header>
+    ${ab ? `<div class="dentro">${def.campos.map(f => campo(f, it, ruta)).join("")}<div class="borrar-fila"><button type="button" class="btn3 peligro" data-borrar="${ruta}">Borrar</button></div></div>` : ""}</article>`;
+}
+
+/* ---------- rutas dentro del contenido ---------- */
+const partes = r => r.split(".");
+const coger = r => partes(r).reduce((o, k) => o == null ? o : o[k], C);
+function poner(r, v) { const p = partes(r), u = p.pop(); let o = C; for (const k of p) { if (o[k] == null) o[k] = {}; o = o[k]; } o[u] = v; }
+const padre = r => { const p = partes(r), i = +p.pop(); return [coger(p.join(".")), i, p.join(".")]; };
+const defSub = r => { const p = partes(r), s = S[p[0]]; if (p.length === 1) return s; return s.campos.find(f => f.k === p[p.length - 1]); };
+const slug = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+/* ---------- pantalla ---------- */
+function pintarLado() {
+  const l = $("#lado"); if (!l) return;
+  l.innerHTML = ORDEN.map(k => `<button type="button" data-sec="${k}"${k === seccion ? ' aria-current="page"' : ""}>${S[k].nombre}${sucio.has(k) ? '<i aria-label="sin guardar">●</i>' : ""}</button>`).join("");
+}
+function pintar() {
+  const s = S[seccion], y = window.scrollY;
+  $("#titulo").textContent = s.nombre;
+  $("#cuerpo").innerHTML = (API ? "" : `<p class="demo"><b>Modo de prueba.</b> Los cambios se guardan solo en este navegador y se ven al abrir la web desde aquí. Cuando se conecte la hoja de Google, se publicarán para todo el mundo.</p>`)
+    + (s.ayuda ? `<p class="ayuda">${s.ayuda}</p>` : "")
+    + (s.lista ? `<div class="lista">${(C[seccion] || []).map((it, i, a) => item(s, it, seccion + "." + i, i, a.length)).join("")}</div><button type="button" class="btn" data-nuevo="${seccion}">${s.nuevo}</button>` : s.campos.map(f => campo(f, C[seccion] || (C[seccion] = {}), seccion)).join(""));
+  pintarLado(); window.scrollTo(0, y);
+}
+function app() {
+  $("#raiz").innerHTML = `<div class="app"><aside class="lado"><span class="marca">arco</span><nav id="lado"></nav><div class="fuera"><a href="index.html" target="_blank" rel="noopener">Ver la web</a><button type="button" id="salir" style="padding:0;opacity:.75">Salir</button></div></aside>
+    <div><div class="barra"><h1 id="titulo"></h1><div class="der"><span class="estado" id="estado" role="status"></span><button class="btn" id="guardar" disabled>Guardar cambios</button></div></div><div class="cuerpo" id="cuerpo"></div></div></div>`;
+  $("#guardar").addEventListener("click", guardarTodo);
+  $("#salir").addEventListener("click", () => { sessionStorage.removeItem("arco-clave"); location.reload(); });
+  pintar();
+}
+document.addEventListener("input", e => {
+  const el = e.target, r = el.dataset.r; if (!r) return;
+  poner(r, el.dataset.bool !== undefined ? el.checked : el.dataset.num !== undefined ? (el.value === "" ? null : +el.value) : el.value);
+  marcar();
+});
+document.addEventListener("change", e => { const r = e.target.dataset.r; if (r && /\.id$/.test(r)) { poner(r, slug(e.target.value)); e.target.value = coger(r); } });
+document.addEventListener("click", async e => {
+  const b = e.target.closest("button"); if (!b) return; const d = b.dataset;
+  if (d.sec) { seccion = d.sec; abierto = null; pintar(); window.scrollTo(0, 0); }
+  else if (d.abrir) { abierto = abierto === d.abrir ? null : d.abrir; pintar(); }
+  else if (d.nuevo) { const def = defSub(d.nuevo), a = coger(d.nuevo) || (poner(d.nuevo, []), coger(d.nuevo)); a.push(def.plantilla()); if (def.lista) abierto = d.nuevo + "." + (a.length - 1); marcar(); pintar(); const u = document.querySelectorAll(".item"); if (def.lista && u.length) u[u.length - 1].scrollIntoView({ block: "start" }); }
+  else if (d.mover) { const [a, i] = padre(d.mover), j = i + +d.d; [a[i], a[j]] = [a[j], a[i]]; if (abierto === d.mover) abierto = d.mover.replace(/\d+$/, j); else if (abierto) abierto = null; marcar(); pintar(); }
+  else if (d.borrar) { b.outerHTML = `<span>¿Borrar del todo?</span><button type="button" class="btn3 peligro" data-borrarsi="${d.borrar}">Sí, borrar</button><button type="button" class="btn3" data-no>Cancelar</button>`; }
+  else if (d.no !== undefined) pintar();
+  else if (d.borrarsi) { const [a, i] = padre(d.borrarsi); a.splice(i, 1); abierto = null; marcar(); pintar(); }
+  else if (d.quitar) { const p = partes(d.quitar); if (/^\d+$/.test(p[p.length - 1])) { const [a, i] = padre(d.quitar); a.splice(i, 1); } else poner(d.quitar, ""); marcar(); pintar(); }
+  else if (d.primera) { const [a, i] = padre(d.primera); a.unshift(a.splice(i, 1)[0]); marcar(); pintar(); }
+  else if (d.subir) {
+    const varias = d.varias !== undefined, files = await elegir(varias); if (!files.length) return;
+    b.disabled = true; b.textContent = "Subiendo…";
+    try { for (const f of files) { const url = await subir(f); if (varias) { const a = coger(d.subir) || (poner(d.subir, []), coger(d.subir)); a.push(url); } else poner(d.subir, url); } marcar(); }
+    catch (err) { const es = $("#estado"); es.className = "estado mal"; es.textContent = err.message === "clave" ? "La contraseña ya no es válida. Vuelve a entrar." : "No se ha podido subir la foto. Prueba con otra o más tarde."; }
+    pintar();
+  }
+});
+// Al crear una vivienda o un barrio, la dirección web se rellena sola a partir del título.
+document.addEventListener("focusout", e => {
+  const r = e.target.dataset && e.target.dataset.r; if (!r) return;
+  const m = r.match(/^(propiedades|barrios)\.(\d+)\.(titulo\.es|nombre)$/); if (!m) return;
+  const it = C[m[1]][+m[2]]; if (it.id || !e.target.value.trim()) return;
+  let id = slug(e.target.value), n = 2; const usados = C[m[1]].map(x => x.id); while (usados.includes(id)) id = slug(e.target.value) + "-" + n++;
+  it.id = id; pintar();
+});
+
+/* ---------- entrada ---------- */
+function entrada(msg) {
+  $("#raiz").innerHTML = `<div class="entrada"><form id="entrar"><h1>Panel de arco</h1><p>Desde aquí se cambian las viviendas, las fotos y los textos de la web.</p>
+    <div class="campo"><label><span>Contraseña</span><input type="password" id="pw" autocomplete="current-password" required></label></div>
+    <button class="btn">Entrar</button><p class="estado mal" style="margin:14px 0 0" role="alert">${msg || ""}</p></form></div>`;
+  $("#entrar").addEventListener("submit", async e => {
+    e.preventDefault(); clave = $("#pw").value; const bt = $("button", e.target); bt.disabled = true; bt.textContent = "Comprobando…";
+    try { const r = await post({ accion: "comprobar" }); if (!r.ok) return entrada(r.error === "sinclave" ? "El panel todavía no tiene contraseña. Hay que ponerla en la configuración de la hoja de Google (PANEL_CLAVE)." : "Esa contraseña no es correcta."); sessionStorage.setItem("arco-clave", clave); await iniciar(); }
+    catch (err) { entrada("No se ha podido conectar. Comprueba la conexión e inténtalo otra vez."); }
+  });
+}
+async function iniciar() {
+  try { await cargar(); app(); } catch (e) { $("#raiz").innerHTML = `<div class="entrada"><p>No se ha podido cargar el contenido. Recarga la página.</p></div>`; }
+}
+if (!API) iniciar();
+else if (clave) post({ accion: "comprobar" }).then(r => r.ok ? iniciar() : entrada()).catch(() => entrada("No se ha podido conectar."));
+else entrada();
+})();
+</script>
+</body>
+</html>

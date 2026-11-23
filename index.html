@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arco. Casas en Madrid</title>
+<meta name="description" content="Agencia inmobiliaria en Madrid. Pocas viviendas, bien conocidas.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B3B8C'/%3E%3Cpath d='M9 26V15a7 7 0 0 1 14 0v11' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cal:#EFEDE6; --blanco:#FFFFFF; --tinta:#111111; --azul:#1B3B8C; --granito:#62666E;
+  --linea:#CFCCC2; --piedra:#E4E1D8; --albero:#E2A93B;
+  --serif:"Instrument Serif",Georgia,serif; --placa:"Playfair Display SC",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --margen:clamp(20px,4.5vw,64px); --ancho:1320px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cal);color:var(--tinta);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{text-wrap:balance;font-family:var(--serif);font-weight:400;line-height:1.05;margin:0;letter-spacing:-.015em;}
+p{margin:0}
+:focus-visible{outline:3px solid var(--albero);outline-offset:3px}
+.w{max-width:var(--ancho);margin:0 auto;padding:0 var(--margen)}
+.oculto{position:absolute;left:-9999px}
+
+/* cabecera */
+.cab{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--cal) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.cab .w{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.logo{display:flex;align-items:flex-end;gap:9px;text-decoration:none;font:400 30px/1 var(--serif);letter-spacing:-.03em;color:var(--azul)}
+.logo svg{width:22px;height:28px}
+.nav{display:flex;align-items:center;gap:clamp(14px,2.4vw,34px);font-size:15.5px}
+.nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current]{border-color:var(--azul)}
+.idioma{border:1px solid var(--tinta);background:none;font:500 13.5px var(--sans);padding:6px 10px;border-radius:2px;cursor:pointer;color:inherit}
+.menu-btn{display:none;border:0;background:none;font:500 15.5px var(--sans);padding:8px 0;cursor:pointer;color:inherit}
+
+/* piezas */
+.btn{display:inline-block;background:var(--azul);color:#fff;text-decoration:none;font:500 16px var(--sans);padding:15px 26px;border:0;border-radius:2px;cursor:pointer}
+.btn:hover{background:var(--tinta)}
+.enlace{font-weight:500;text-underline-offset:5px;text-decoration-thickness:1.5px}
+.enlace:hover{color:var(--azul)}
+.placa{display:inline-block;background:var(--blanco);border:2px solid var(--azul);outline:1px solid var(--azul);outline-offset:-5px;color:var(--azul);font:500 14.5px var(--serif);padding:7px 14px 6px;text-decoration:none}
+.arco{border-radius:999px 999px 0 0;overflow:hidden;background:var(--azul)}
+.foto{position:relative;overflow:hidden;background:var(--azul)}
+.foto img,.foto svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.estado{position:absolute;left:12px;bottom:12px;background:var(--albero);color:var(--tinta);font:600 13px var(--sans);padding:4px 10px;z-index:1}
+.sec{padding:clamp(56px,8vw,112px) 0}
+.sec-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,4vw,48px)}
+.sec-cab h2{font-size:clamp(34px,4.6vw,60px)}
+
+/* portada */
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,80px);align-items:end;padding-top:clamp(36px,6vw,84px);padding-bottom:clamp(48px,7vw,96px)}
+.hero h1{font-size:clamp(52px,8.6vw,132px);line-height:.94;letter-spacing:-.035em;color:var(--azul)}
+.hero .txt{max-width:33em;margin-top:clamp(24px,3vw,40px);font-size:clamp(17px,1.35vw,20px)}
+.hero .acc{display:flex;flex-wrap:wrap;align-items:center;gap:28px;margin-top:36px}
+.hero-casa{display:block;text-decoration:none}
+.hero-casa .arco{aspect-ratio:4/5;position:relative}
+.hero-casa .pie{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:16px;border-top:0}
+.hero-casa .pie b{font:400 22px/1.2 var(--serif)}
+.hero-casa .pie span{white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+  .hero-casa .arco{animation:subir 1.1s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes subir{from{clip-path:inset(100% 0 0 0 round 999px 999px 0 0)}to{clip-path:inset(0 0 0 0 round 999px 999px 0 0)}}
+}
+
+/* tarjetas de vivienda */
+.rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3.4vw,52px) clamp(20px,2.4vw,36px)}
+.casa{display:block;text-decoration:none}
+.casa .foto{aspect-ratio:4/3}
+.casa .foto img,.casa .foto svg{transition:transform .5s}
+.casa:hover .foto img,.casa:hover .foto svg{transform:scale(1.03)}
+.casa .zona{margin-top:16px;color:var(--azul);font:500 15px var(--serif)}
+.casa h3{font-size:25px;line-height:1.15;margin-top:4px}
+.casa .datos{color:var(--granito);font-size:15.5px;margin-top:8px}
+.casa .precio{font-weight:600;margin-top:10px;font-size:18px}
+
+/* barrios */
+.banda{background:var(--azul);color:#fff}
+.banda .sec-cab p{max-width:26em;opacity:.85}
+.barrios{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.3)}
+.barrios a{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.3);text-decoration:none}
+.barrios b{font:300 clamp(30px,4.4vw,58px)/1.05 var(--serif);letter-spacing:-.02em}
+.barrios span{opacity:.8;font-size:15.5px}
+.barrios a:hover b{color:var(--albero)}
+
+/* vender (portada) */
+.cta{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,5vw,80px);align-items:end}
+.cta h2{font-size:clamp(38px,5.4vw,76px)}
+.cta p{margin-bottom:24px;max-width:30em}
+
+/* páginas interiores */
+.pag-cab{padding:clamp(40px,6vw,80px) 0 clamp(28px,4vw,48px)}
+.pag-cab h1{font-size:clamp(42px,6.4vw,92px);letter-spacing:-.03em;color:var(--azul);max-width:14em}
+.pag-cab p{max-width:36em;margin-top:22px;font-size:19px}
+.volver{display:inline-block;margin-bottom:22px;font-size:15px;color:var(--granito)}
+.filtros{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:end;padding:18px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);margin-bottom:40px}
+label{display:block;font-size:14px;font-weight:500}
+select,input,textarea{display:block;width:100%;margin-top:6px;font:400 16px var(--sans);color:var(--tinta);background:var(--blanco);border:1px solid #AEB1AC;border-radius:2px;padding:11px 12px}
+.filtros label{min-width:170px;flex:1}
+.filtros .n{margin-left:auto;color:var(--granito);font-size:15px;padding-bottom:12px}
+.vacio{padding:48px 0;font-size:19px}
+
+/* ficha */
+.ficha-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;padding-bottom:28px}
+.ficha-top h1{font-size:clamp(36px,5vw,68px);letter-spacing:-.025em}
+.ficha-top .precio{font:400 clamp(28px,3vw,40px) var(--serif);white-space:nowrap}
+.galeria .foto{aspect-ratio:16/9}
+.galeria .mini{display:flex;gap:8px;margin-top:8px;overflow-x:auto}
+.galeria .mini button{flex:0 0 110px;aspect-ratio:4/3;border:0;padding:0;position:relative;cursor:pointer;background:var(--piedra);opacity:.6}
+.galeria .mini button[aria-current]{opacity:1;outline:2px solid var(--azul)}
+.galeria .mini img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ficha{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(32px,5vw,88px);padding-top:clamp(32px,4vw,56px);align-items:start}
+.ficha h2{font-size:30px;margin:44px 0 16px}
+.ficha h2:first-child{margin-top:0}
+.desc{font-size:19px;max-width:38em;white-space:pre-line}
+dl.tabla{margin:0;display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+dl.tabla div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--linea)}
+dl.tabla dt{color:var(--granito)}
+dl.tabla dd{margin:0;font-weight:500;text-align:right}
+.mapa{height:380px;background:var(--piedra);z-index:0}
+.nota{color:var(--granito);font-size:14.5px;margin-top:8px}
+.caja{background:var(--blanco);border:1px solid var(--linea);padding:28px;position:sticky;top:92px}
+.caja h2{font-size:28px;margin:0 0 6px}
+form.f{display:grid;gap:14px;margin-top:18px}
+form.f .dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form.f .ok{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14.5px}
+form.f .ok input{width:auto;margin:3px 0 0}
+form.f .aviso{font-size:15px;min-height:1.4em}
+form.f .aviso.bien{color:#1E6B3C;font-weight:500}
+form.f .aviso.mal{color:#A3261E;font-weight:500}
+
+/* barrio, vender, sobre */
+.barrio-fila{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);padding:clamp(36px,5vw,64px) 0;border-top:1px solid var(--linea)}
+.barrio-fila h2{font-size:clamp(32px,4vw,52px);color:var(--azul)}
+.barrio-fila h2 a{text-decoration:none}
+.barrio-fila .z{color:var(--granito);margin-top:6px}
+.barrio-fila .t{font-size:19px;max-width:34em;margin-bottom:24px}
+.mini-casas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.dos-col{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,5vw,88px);align-items:start}
+.pasos{list-style:none;margin:0;padding:0;counter-reset:p}
+.pasos li{counter-increment:p;display:grid;grid-template-columns:64px 1fr;padding:24px 0;border-top:1px solid var(--linea)}
+.pasos li::before{content:counter(p);font:300 44px/1 var(--serif);color:var(--azul)}
+.pasos h3{font-size:26px;margin-bottom:6px}
+.equipo{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:32px;margin-top:20px}
+.equipo .arco{aspect-ratio:4/5;position:relative;max-width:300px}
+.equipo h3{font-size:24px;margin-top:14px}
+.equipo .c{color:var(--granito)}
+.prosa{font-size:19px;max-width:38em;white-space:pre-line}
+.contacto-datos p{padding:14px 0;border-bottom:1px solid var(--linea)}
+.contacto-datos span{display:block;color:var(--granito);font-size:14.5px}
+
+/* pie */
+.pie-web{background:var(--tinta);color:#fff;padding:clamp(48px,6vw,80px) 0 28px;margin-top:clamp(56px,8vw,112px)}
+.pie-web .g{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.pie-web .logo{color:#fff;font-size:clamp(64px,10vw,140px)}
+.pie-web .logo svg{width:.72em;height:.92em}
+.pie-web ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pie-web a{text-decoration:none}
+.pie-web a:hover{text-decoration:underline}
+.pie-web .fin{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,255,255,.2);font-size:14px;opacity:.75;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+
+/* dirección «referencias»: foto a sangre, buscador, tarjetas con foto */
+:root{--cal:#FFFFFF;--tinta:#0B0F1A;--azul:#0E1A45;--linea:#E3E1DC;--piedra:#F4F2EE;--serif:"Cormorant Garamond",Georgia,serif}
+main{overflow-x:clip}
+.w.sec{padding-left:var(--margen);padding-right:var(--margen)}
+h1,h2,h3{font-weight:500;letter-spacing:0}
+.cab{background:#fff}
+.cab .w{height:76px}
+.logo{color:var(--tinta);font:500 25px/1 var(--serif);letter-spacing:.34em;text-transform:uppercase;align-items:center;gap:12px}
+.logo svg{width:17px;height:22px}
+.nav{font-size:14.5px;letter-spacing:.02em}
+body.portada .cab{position:absolute;left:0;right:0;background:none;border-color:rgba(255,255,255,.28);backdrop-filter:none;color:#fff}
+body.portada .cab .logo,body.portada .idioma,body.portada .menu-btn{color:#fff;border-color:#fff}
+body.portada .nav a:hover{border-color:#fff}
+.btn{border-radius:0;letter-spacing:.04em;font-size:15px}
+.arco{border-radius:0}
+.foto{background:#161C30}
+.foto svg{opacity:.3}
+.pend{position:absolute;right:12px;top:12px;z-index:1;font-size:12.5px;color:#fff;background:rgba(0,0,0,.45);padding:3px 9px}
+.hero2{position:relative;min-height:min(92vh,900px);display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:#0B1022}
+.hero2 .fondo{position:absolute;inset:0}
+.hero2 .fondo img,.hero2 .fondo svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero2 .fondo svg{opacity:.22}
+.hero2 .fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(6,9,20,.5),rgba(6,9,20,.08) 36%,rgba(6,9,20,.78))}
+.hero2 .w{position:relative;width:100%;padding-bottom:clamp(32px,5vw,64px)}
+.hero2 h1{font-size:clamp(44px,6.4vw,96px);font-weight:400;line-height:1;max-width:11em}
+.hero2 p{max-width:34em;margin-top:18px;font-size:18px;opacity:.92}
+.busca{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;background:#fff;color:var(--tinta);margin-top:clamp(28px,4vw,48px)}
+.busca label{padding:14px 20px 12px;border-right:1px solid var(--linea);font-size:12.5px;color:var(--granito)}
+.busca select{border:0;padding:4px 0 0;margin:0;font-size:16.5px;background:none;font-weight:500}
+.busca .btn{padding:0 44px;background:var(--tinta)}
+.busca .btn:hover{background:var(--azul)}
+.sec-cab h2{font-size:clamp(34px,4vw,54px)}
+.casa .foto{aspect-ratio:3/2}
+.casa .precio{font:500 27px/1.1 var(--serif);margin-top:16px}
+.casa h3{font:500 17px/1.35 var(--sans);margin-top:6px}
+.casa .zona{font:400 15px var(--sans);color:var(--granito);margin-top:2px}
+.casa .datos{border-top:1px solid var(--linea);padding-top:10px;margin-top:12px;color:var(--tinta);font-size:14.5px}
+.gris{background:var(--piedra)}
+.lugares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.lugar{position:relative;display:block;aspect-ratio:4/3;color:#fff;text-decoration:none;overflow:hidden;background:#161C30}
+.lugar:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.lugar img,.lugar svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.lugar svg{opacity:.28}
+.lugar:hover img,.lugar:hover svg{transform:scale(1.04)}
+.lugar::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(6,9,20,.75))}
+.lugar div{position:absolute;left:22px;right:22px;bottom:18px;z-index:1}
+.lugar b{display:block;font:500 clamp(24px,2.4vw,36px)/1.05 var(--serif)}
+.lugar span{font-size:14.5px;opacity:.9}
+.vende{display:grid;grid-template-columns:1fr 1fr;background:var(--tinta);color:#fff}
+.vende .foto{min-height:440px}
+.vende .t{padding:clamp(40px,6vw,96px);align-self:center}
+.vende h2{font-size:clamp(36px,4.4vw,62px)}
+.vende p{margin:18px 0 28px;max-width:28em;opacity:.9}
+.btn.claro{background:#fff;color:var(--tinta)}.btn.claro:hover{background:var(--piedra);color:var(--tinta)}
+.pag-cab h1{color:var(--tinta);font-weight:400}
+.ficha-top h1{font-weight:400}
+.ficha-top .dir{color:var(--granito);margin-top:8px}
+.rasgos{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);margin-top:28px}
+.rasgos div{padding:18px 36px 16px 0;margin-right:36px;border-right:1px solid var(--linea)}
+.rasgos div:last-child{border:0}
+.rasgos b{display:block;font:500 30px/1 var(--serif)}
+.rasgos span{font-size:14px;color:var(--granito)}
+.caja{border-radius:0}
+.agente{display:flex;gap:14px;align-items:center;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--linea)}
+.agente .foto{width:64px;height:64px;border-radius:50%;flex:none}
+.agente b{display:block;font:500 21px/1.1 var(--serif)}
+.agente span{font-size:14px;color:var(--granito)}
+.plano{width:100%;height:auto;background:var(--piedra);border:0}
+.plano text{font:500 13px var(--sans);fill:var(--tinta)}
+.plano .rot text{font:italic 400 14px var(--serif);fill:var(--azul);opacity:.7}
+.plano a:hover text{text-decoration:underline}
+.barrio-fila h2{color:var(--tinta)}
+.pasos li::before{color:var(--tinta)}
+.pie-web{background:#070A14;margin-top:0}
+.pie-web .logo{font-size:clamp(34px,4.4vw,60px);color:#fff}
+main>.w:last-child{padding-bottom:clamp(56px,8vw,112px)}
+@media (max-width:900px){
+  .busca{grid-template-columns:1fr}.busca label{border-right:0;border-bottom:1px solid var(--linea)}.busca .btn{padding:16px}
+  .lugares{grid-template-columns:1fr 1fr}.vende{grid-template-columns:1fr}.vende .foto{min-height:240px}
+  body.portada .nav{color:var(--tinta)}
+  .rasgos div{padding-right:20px;margin-right:20px}
+
+  .hero,.cta,.ficha,.dos-col,.barrio-fila{grid-template-columns:1fr}
+  .hero-casa{max-width:420px}
+  .rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .caja{position:static}
+  .pie-web .g{grid-template-columns:1fr 1fr}
+  .pie-web .g>:first-child{grid-column:1/-1}
+  .menu-btn{display:block}
+  .nav{display:none;position:absolute;left:0;right:0;top:68px;background:var(--cal);border-bottom:1px solid var(--linea);flex-direction:column;align-items:flex-start;padding:16px var(--margen) 24px;font-size:20px}
+  .nav.abierto{display:flex}
+  .ficha-top{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  body{font-size:16.5px}
+  .rejilla,.mini-casas,dl.tabla,form.f .dos{grid-template-columns:1fr}
+  .lugares{grid-template-columns:1fr}.lugar:first-child{grid-column:auto;aspect-ratio:4/3}
+  .sec-cab{flex-direction:column;align-items:flex-start}
+  .galeria .foto{aspect-ratio:4/3}
+  .filtros label{min-width:100%}
+}
+</style>
+</head>
+<body>
+<header class="cab"><div class="w">
+  <a class="logo" href="#inicio" aria-label="arco, inicio"><svg viewBox="0 0 22 28" aria-hidden="true"><path d="M2 28V11a9 9 0 0 1 18 0v17" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>arco</span></a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav"></button>
+  <nav class="nav" id="nav"></nav>
+</div></header>
+<main id="main" tabindex="-1"></main>
+<footer class="pie-web" id="pie"></footer>
+
+<script src="config.js"></script>
+<script src="content/contenido.js"></script>
+<script>
+(() => {
+const API = (window.CONFIG || {}).API_URL || "";
+const $ = (s, r = document) => r.querySelector(s);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const leer = k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } };
+const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+
+let lang = new URLSearchParams(location.search).get("lang") || (() => { try { return localStorage.getItem("arco-lang"); } catch (e) { return null; } })() || ((navigator.language || "es").startsWith("es") ? "es" : "en");
+if (lang !== "en") lang = "es";
+let C = Object.assign({}, window.CONTENIDO_BASE, API ? leer("arco-copia") : leer("arco-demo"));
+
+const T = {
+  es: { viviendas: "Viviendas", barrios: "Barrios", vender: "Vender", sobre: "Sobre arco", contacto: "Contacto", menu: "Menú", otro: "EN", otroLabel: "Read in English",
+    buscar: "Buscar", verTodas: "Ver todas las viviendas", verCasas: "Ver las viviendas", venderMi: "Vender mi casa", pedirValoracion: "Pedir una valoración",
+    hab: n => n + (n == 1 ? " dormitorio" : " dormitorios"), ban: n => n + (n == 1 ? " baño" : " baños"),
+    tipos: { piso: "Piso", duplex: "Dúplex", atico: "Ático", chalet: "Casa o chalet", estudio: "Estudio", local: "Local", otro: "Otro" },
+    estados: { reservada: "Reservada", vendida: "Vendida" },
+    fBarrio: "Barrio", fTipo: "Tipo de vivienda", fPrecio: "Precio máximo", fHab: "Dormitorios", todos: "Todos", cualquiera: "Sin límite", hasta: "Hasta ", oMas: " o más",
+    nCasas: n => n + (n == 1 ? " vivienda" : " viviendas"), sinCasas: "Ninguna vivienda coincide con esos filtros.", quitar: "Quitar los filtros",
+    sinCasasBarrio: "Ahora mismo no tenemos viviendas en este barrio.",
+    titViviendas: "Viviendas en venta", volverViviendas: "Todas las viviendas", volverBarrios: "Todos los barrios",
+    datos: "Datos", precio: "Precio", superficie: "Superficie", parcela: "Parcela", dormitorios: "Dormitorios", banos: "Baños", planta: "Planta", ascensor: "Ascensor", orientacion: "Orientación", exterior: "Exterior", interior: "Interior", garaje: "Garaje", ref: "Referencia", si: "Sí", no: "No", incluido: "Incluido",
+    descripcion: "La vivienda", elBarrio: "El barrio", zona: "Dónde está", zonaNota: "El círculo marca la zona aproximada, no la dirección exacta.", masBarrio: "Más sobre ",
+    visita: "Pide una visita", visitaTxt: "Te respondemos para buscar un día.", verIdealista: "Ver el anuncio completo",
+    nombre: "Nombre", correo: "Correo", telefono: "Teléfono", mensaje: "Mensaje", direccionCasa: "Dirección de la vivienda", m2: "Metros cuadrados (aproximados)",
+    acepto: "He leído la información de privacidad y acepto que arco use estos datos para responderme.", privacidad: "Privacidad",
+    enviar: "Enviar mensaje", enviarVisita: "Pedir visita", enviarValoracion: "Pedir valoración", enviando: "Enviando…",
+    enviado: "Mensaje enviado. Te responderemos lo antes posible.", errDatos: "Revisa el nombre, el correo y la casilla de privacidad.", errRed: "No se ha podido enviar. Inténtalo otra vez en unos minutos.", errLimite: "Hemos recibido muchos mensajes seguidos. Inténtalo más tarde.", demo: "Web de prueba: el formulario todavía no está conectado, así que el mensaje no se ha enviado.",
+    msgVisita: t => "Me gustaría visitar: " + t + ".",
+    equipo: "Quién está detrás", dondeEstamos: "Dónde estamos", direccion: "Dirección", horario: "Horario", escribenos: "Escríbenos", contactoTxt: "Cuéntanos qué buscas o qué quieres vender.",
+    tambien: "También en Idealista", noEncontrada: "Esta página no existe.", inicio: "Volver al inicio", derechos: "Todos los derechos reservados.", m: " m²" },
+  en: { viviendas: "Homes", barrios: "Neighbourhoods", vender: "Sell", sobre: "About arco", contacto: "Contact", menu: "Menu", otro: "ES", otroLabel: "Leer en español",
+    buscar: "Search", verTodas: "See all homes", verCasas: "See the homes", venderMi: "Sell my home", pedirValoracion: "Ask for a valuation",
+    hab: n => n + (n == 1 ? " bedroom" : " bedrooms"), ban: n => n + (n == 1 ? " bathroom" : " bathrooms"),
+    tipos: { piso: "Flat", duplex: "Duplex", atico: "Penthouse", chalet: "House", estudio: "Studio", local: "Commercial unit", otro: "Other" },
+    estados: { reservada: "Reserved", vendida: "Sold" },
+    fBarrio: "Neighbourhood", fTipo: "Type of home", fPrecio: "Maximum price", fHab: "Bedrooms", todos: "All", cualquiera: "No limit", hasta: "Up to ", oMas: " or more",
+    nCasas: n => n + (n == 1 ? " home" : " homes"), sinCasas: "No homes match those filters.", quitar: "Clear the filters",
+    sinCasasBarrio: "We have no homes in this neighbourhood right now.",
+    titViviendas: "Homes for sale", volverViviendas: "All homes", volverBarrios: "All neighbourhoods",
+    datos: "Details", precio: "Price", superficie: "Floor area", parcela: "Plot", dormitorios: "Bedrooms", banos: "Bathrooms", planta: "Floor", ascensor: "Lift", orientacion: "Outlook", exterior: "Street-facing", interior: "Interior-facing", garaje: "Garage", ref: "Reference", si: "Yes", no: "No", incluido: "Included",
+    descripcion: "The home", elBarrio: "The neighbourhood", zona: "Where it is", zonaNota: "The circle marks the approximate area, not the exact address.", masBarrio: "More about ",
+    visita: "Ask for a viewing", visitaTxt: "We will reply to find a day.", verIdealista: "See the full listing",
+    nombre: "Name", correo: "Email", telefono: "Phone", mensaje: "Message", direccionCasa: "Address of the home", m2: "Square metres (approximate)",
+    acepto: "I have read the privacy information and agree to arco using these details to reply to me.", privacidad: "Privacy",
+    enviar: "Send message", enviarVisita: "Ask for a viewing", enviarValoracion: "Ask for a valuation", enviando: "Sending…",
+    enviado: "Message sent. We will reply as soon as we can.", errDatos: "Check the name, the email and the privacy box.", errRed: "The message could not be sent. Try again in a few minutes.", errLimite: "We have received many messages in a row. Try again later.", demo: "Test site: the form is not connected yet, so the message was not sent.",
+    msgVisita: t => "I would like to view: " + t + ".",
+    equipo: "Who is behind it", dondeEstamos: "Where we are", direccion: "Address", horario: "Opening hours", escribenos: "Write to us", contactoTxt: "Tell us what you are looking for or what you want to sell.",
+    tambien: "Also on Idealista", noEncontrada: "This page does not exist.", inicio: "Back to the home page", derechos: "All rights reserved.", m: " m²" }
+};
+const t = () => T[lang];
+const L = o => o == null ? "" : typeof o === "object" ? (o[lang] || o.es || "") : o;
+const eur = n => lang === "es" ? new Intl.NumberFormat("de-DE").format(n) + " €" : "€" + new Intl.NumberFormat("en-GB").format(n);
+const casas = () => (C.propiedades || []).filter(p => p.visible !== false);
+const barrio = id => (C.barrios || []).find(b => b.id === id);
+
+// Dibujo de fachada madrileña para las viviendas que aún no tienen foto.
+function fachada(semilla, entera) {
+  let h = 0; for (const c of String(semilla)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  const c = 3 + h % 2, f = 4, W = c * 100, H = f * 130 + 60; let s = `<path d="M0 34H${W}M0 44H${W}" stroke="#fff" stroke-width="2"/>`;
+  for (let y = 0; y < f; y++) for (let x = 0; x < c; x++) {
+    const X = x * 100 + 26, Y = 70 + y * 130, on = (x * 7 + y * 13 + h) % 5 === 0;
+    s += `<rect x="${X}" y="${Y}" width="48" height="84" fill="${on ? "#fff" : "none"}" stroke="#fff" stroke-width="1.6"/><path d="M${X + 24} ${Y}v84M${X} ${Y + 28}h48" stroke="#fff"/><path d="M${X - 12} ${Y + 84}h72M${X - 12} ${Y + 52}h72M${X - 10} ${Y - 8}h68" stroke="#fff" stroke-width="2"/>`;
+    for (let i = 0; i <= 8; i++) s += `<path d="M${X - 12 + i * 9} ${Y + 52}v32" stroke="#fff"/>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="${entera ? "xMidYMax meet" : "xMidYMin slice"}" aria-hidden="true">${s}</svg>`;
+}
+// Plano dibujado de Madrid. Sitúa cada punto por su latitud y longitud; lo que queda fuera se pega al borde.
+function plano(puntos, radio) {
+  const X = g => (g + 3.80) / 0.28 * 600, Y = l => (40.50 - l) / 0.14 * 400, pt = (g, l) => X(g).toFixed(0) + " " + Y(l).toFixed(0);
+  const linea = a => "M" + a.map(p => pt(p[0], p[1])).join("L");
+  const pines = puntos.map(p => { const fuera = p.lng > -3.53 || p.lat > 40.495, x = Math.max(20, Math.min(580, X(p.lng))), y = Math.max(20, Math.min(380, Y(p.lat))), izq = x > 430;
+    return `<a href="${esc(p.href || "#")}" class="pin">${radio && !fuera ? `<circle cx="${x}" cy="${y}" r="${radio}" fill="var(--azul)" fill-opacity=".14" stroke="var(--azul)"/>` : ""}<circle cx="${x}" cy="${y}" r="6" fill="var(--albero)" stroke="#111" stroke-width="1.5"/><text x="${x + (izq ? -11 : 11) * (radio && !fuera ? radio / 9 : 1)}" y="${y + 5}" text-anchor="${izq ? "end" : "start"}">${esc(p.nombre)}${fuera ? " ↗" : ""}</text></a>`; }).join("");
+  return `<svg class="plano" viewBox="0 0 600 400" role="img" aria-label="${lang === "es" ? "Plano orientativo de Madrid" : "Sketch map of Madrid"}"><g fill="none" stroke="var(--azul)">
+    <path d="${linea([[-3.745, 40.475], [-3.728, 40.435], [-3.722, 40.415], [-3.715, 40.398], [-3.700, 40.385], [-3.680, 40.368]])}" stroke-width="9" stroke-opacity=".16" stroke-linecap="round"/>
+    <ellipse cx="${X(-3.693)}" cy="${Y(40.432)}" rx="76" ry="128" stroke-opacity=".35" stroke-dasharray="2 7"/>
+    <path d="${linea([[-3.690, 40.50], [-3.691, 40.425], [-3.693, 40.407]])}" stroke-width="2.5" stroke-opacity=".4"/>
+    <path d="${linea([[-3.713, 40.423], [-3.690, 40.419], [-3.52, 40.462]])}" stroke-opacity=".35"/>
+    <path d="${linea([[-3.704, 40.417], [-3.712, 40.404], [-3.745, 40.383]])}" stroke-opacity=".35"/>
+    <rect x="${X(-3.690)}" y="${Y(40.420)}" width="15" height="26" stroke-opacity=".35"/></g>
+    <g class="rot"><text x="${X(-3.775)}" y="${Y(40.422)}">Casa de Campo</text><text x="${X(-3.686)}" y="${Y(40.487)}">la Castellana</text><text x="${X(-3.672)}" y="${Y(40.412)}">Retiro</text><text x="${X(-3.655)}" y="${Y(40.385)}">M-30</text></g>${pines}</svg>`;
+}
+const img = (url, alt, semilla, entera) => url ? `<img src="${esc(url)}" alt="${esc(alt)}" loading="lazy">` : fachada(semilla, entera) + `<span class="pend">${lang === "es" ? "Foto pendiente" : "Photo to come"}</span>`;
+const estado = p => t().estados[p.estado] ? `<span class="estado">${t().estados[p.estado]}</span>` : "";
+const resumen = p => [p.m2 && p.m2 + t().m, p.hab && t().hab(p.hab), p.banos && t().ban(p.banos)].filter(Boolean).join(", ");
+const tarjeta = p => { const b = barrio(p.barrio); return `<a class="casa" href="#vivienda-${esc(p.id)}">
+  <div class="foto">${img((p.fotos || [])[0], L(p.titulo), p.id)}${estado(p)}</div>
+  <p class="precio">${eur(p.precio)}</p><h3>${esc(L(p.titulo))}</h3><p class="zona">${esc(b ? b.nombre + ", " + L(b.zona) : "")}</p>
+  <p class="datos">${esc(resumen(p))}</p></a>`; };
+
+function formulario(tipo, extra = "") {
+  const x = t(), boton = tipo === "visita" ? x.enviarVisita : tipo === "valoracion" ? x.enviarValoracion : x.enviar;
+  return `<form class="f" data-tipo="${tipo}" novalidate>${extra}
+    <div class="dos"><label>${x.nombre}<input name="nombre" autocomplete="name" required></label><label>${x.telefono}<input name="telefono" type="tel" autocomplete="tel"></label></div>
+    <label>${x.correo}<input name="correo" type="email" autocomplete="email" required></label>
+    <label>${x.mensaje}<textarea name="mensaje" rows="4"></textarea></label>
+    <label class="oculto" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off"></label>
+    <label class="ok"><input type="checkbox" name="acepta" required><span>${x.acepto} <a href="#privacidad">${x.privacidad}</a></span></label>
+    <div><button class="btn">${boton}</button></div><p class="aviso" role="status"></p></form>`;
+}
+
+/* ---------- páginas ---------- */
+const P = {};
+const calle = p => p.calle || L(p.titulo);
+P.inicio = () => {
+  const h = C.portada || {}, lista = casas(), x = t(), bs = C.barrios || [], d = lista.find(p => p.destacada) || lista[0] || {};
+  const tipos = [...new Set(lista.map(p => p.tipo))], op = (v, n) => `<option value="${esc(v)}">${esc(n)}</option>`;
+  const fondo = h.foto || (d.fotos || [])[0];
+  return { portada: true, html: `
+  <section class="hero2"><div class="fondo">${fondo ? `<img src="${esc(fondo)}" alt="">` : fachada("portada")}</div>
+    <div class="w"><h1>${esc(L(h.titulo))}</h1><p>${esc(L(h.texto))}</p>
+    <form class="busca" id="busca">
+      <label>${x.fBarrio}<select name="barrio">${op("", x.todos)}${bs.map(b => op(b.id, b.nombre)).join("")}</select></label>
+      <label>${x.fTipo}<select name="tipo">${op("", x.todos)}${tipos.map(k => op(k, x.tipos[k] || k)).join("")}</select></label>
+      <label>${x.fPrecio}<select name="precio">${op("", x.cualquiera)}${[250000, 350000, 500000, 750000, 1000000, 2000000].map(n => op(n, x.hasta + eur(n))).join("")}</select></label>
+      <button class="btn">${x.buscar}</button></form></div>
+  </section>
+  <section class="w sec">
+    <div class="sec-cab"><h2>${esc(L(h.tituloViviendas))}</h2><a class="enlace" href="#viviendas">${x.verTodas}</a></div>
+    <div class="rejilla">${lista.slice(0, 6).map(tarjeta).join("")}</div>
+  </section>
+  <section class="gris sec"><div class="w">
+    <div class="sec-cab"><h2>${esc(L(h.tituloBarrios))}</h2><p style="max-width:26em">${esc(L(h.textoBarrios))}</p></div>
+    <div class="lugares">${bs.map(b => { const n = lista.filter(p => p.barrio === b.id).length; return `<a class="lugar" href="#barrio-${esc(b.id)}">${b.foto ? `<img src="${esc(b.foto)}" alt="" loading="lazy">` : fachada(b.id)}<div><b>${esc(b.nombre)}</b><span>${esc(L(b.zona))}. ${x.nCasas(n)}</span></div></a>`; }).join("")}</div>
+  </div></section>
+  <section class="vende"><div class="foto">${h.fotoVender ? `<img src="${esc(h.fotoVender)}" alt="" loading="lazy">` : fachada("vender")}</div>
+    <div class="t"><h2>${esc(L(h.tituloVender))}</h2><p>${esc(L(h.textoVender))}</p><a class="btn claro" href="#vender">${x.pedirValoracion}</a></div></section>`,
+    listo() { $("#busca").addEventListener("submit", e => { e.preventDefault(); const f = Object.fromEntries(new FormData(e.target)); filtros = { barrio: f.barrio, tipo: f.tipo, precio: f.precio, hab: "" }; location.hash = "viviendas"; }); } };
+};
+
+let filtros = { barrio: "", tipo: "", precio: "", hab: "" };
+P.viviendas = () => {
+  const x = t(), todas = casas(), tipos = [...new Set(todas.map(p => p.tipo))];
+  const lista = todas.filter(p => (!filtros.barrio || p.barrio === filtros.barrio) && (!filtros.tipo || p.tipo === filtros.tipo) && (!filtros.precio || p.precio <= +filtros.precio) && (!filtros.hab || p.hab >= +filtros.hab)).sort((a, b) => b.precio - a.precio);
+  const op = (v, txt, sel) => `<option value="${esc(v)}"${String(sel) === String(v) ? " selected" : ""}>${esc(txt)}</option>`;
+  return { titulo: x.titViviendas, html: `
+  <div class="w"><div class="pag-cab"><h1>${x.titViviendas}</h1></div>
+  <form class="filtros" id="filtros">
+    <label>${x.fBarrio}<select name="barrio">${op("", x.todos, filtros.barrio)}${(C.barrios || []).map(b => op(b.id, b.nombre, filtros.barrio)).join("")}</select></label>
+    <label>${x.fTipo}<select name="tipo">${op("", x.todos, filtros.tipo)}${tipos.map(k => op(k, x.tipos[k] || k, filtros.tipo)).join("")}</select></label>
+    <label>${x.fPrecio}<select name="precio">${op("", x.cualquiera, filtros.precio)}${[250000, 350000, 500000, 750000, 1000000, 2000000].map(n => op(n, x.hasta + eur(n), filtros.precio)).join("")}</select></label>
+    <label>${x.fHab}<select name="hab">${op("", x.todos, filtros.hab)}${[1, 2, 3, 4].map(n => op(n, n + x.oMas, filtros.hab)).join("")}</select></label>
+    <span class="n" aria-live="polite">${x.nCasas(lista.length)}</span>
+  </form>
+  ${lista.length ? `<div class="rejilla">${lista.map(tarjeta).join("")}</div>` : `<p class="vacio">${x.sinCasas} <a class="enlace" href="#viviendas" id="quitar">${x.quitar}</a></p>`}</div>`,
+    listo() {
+      $("#filtros").addEventListener("change", e => { filtros[e.target.name] = e.target.value; pintar(true); });
+      const q = $("#quitar"); if (q) q.addEventListener("click", e => { e.preventDefault(); filtros = { barrio: "", tipo: "", precio: "", hab: "" }; pintar(true); });
+    } };
+};
+
+P.vivienda = id => {
+  const p = casas().find(v => v.id === id); if (!p) return P.nada();
+  const x = t(), b = barrio(p.barrio), fotos = p.fotos || [], tit = L(p.titulo), ag = ((C.sobre || {}).equipo || [])[0];
+  const fila = (k, v) => v || v === 0 ? `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>` : "";
+  const enlace = p.enlace || "";
+  return { titulo: tit, desc: L(p.descripcion), html: `
+  <div class="w" style="padding-top:clamp(28px,4vw,48px)">
+    <a class="volver" href="#viviendas">‹ ${x.volverViviendas}</a>
+    <div class="ficha-top"><div><h1>${esc(tit)}</h1><p class="dir">${b ? `<a href="#barrio-${esc(b.id)}">${esc(b.nombre)}</a>, ${esc(L(b.zona))}` : ""}</p></div><p class="precio">${eur(p.precio)}</p></div>
+    <div class="galeria"><div class="foto" id="fotoG">${img(fotos[0], tit, p.id, true)}${estado(p)}</div>
+      ${fotos.length > 1 ? `<div class="mini">${fotos.map((f, i) => `<button type="button" data-i="${i}"${i ? "" : ' aria-current="true"'} aria-label="${i + 1} / ${fotos.length}"><img src="${esc(f)}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}</div>
+    <div class="rasgos">${[[p.m2, "m²"], [p.hab, x.dormitorios], [p.banos, x.banos], [p.parcela, "m² " + x.parcela.toLowerCase()], [p.ref, x.ref]].filter(r => r[0]).map(r => `<div><b>${esc(r[0])}</b><span>${r[1]}</span></div>`).join("")}</div>
+    <div class="ficha"><div>
+      <h2>${x.descripcion}</h2><p class="desc">${esc(L(p.descripcion))}</p>
+      <h2>${x.datos}</h2><dl class="tabla">
+        ${fila(x.superficie, p.m2 && p.m2 + x.m)}${fila(x.parcela, p.parcela && p.parcela + x.m)}${fila(x.dormitorios, p.hab)}${fila(x.banos, p.banos)}
+        ${fila(x.planta, L(p.planta))}${p.tipo === "chalet" ? "" : fila(x.ascensor, p.ascensor ? x.si : x.no)}${fila(x.orientacion, p.exterior ? x.exterior : x.interior)}${p.garaje ? fila(x.garaje, x.incluido) : ""}${fila(x.ref, p.ref)}</dl>
+      ${p.lat && p.lng ? `<h2>${x.zona}</h2>${plano([{ lat: +p.lat, lng: +p.lng, nombre: b ? b.nombre : "" }], 22)}<p class="nota">${x.zonaNota}</p>` : ""}
+      ${b ? `<h2>${x.elBarrio}</h2><p class="desc">${esc(L(b.texto))}</p><p style="margin-top:14px"><a class="enlace" href="#barrio-${esc(b.id)}">${x.masBarrio}${esc(b.nombre)}</a></p>` : ""}
+    </div>
+    <aside class="caja">${ag ? `<div class="agente">${ag.foto ? `<div class="foto"><img src="${esc(ag.foto)}" alt=""></div>` : ""}<div><b>${esc(ag.nombre)}</b><span>${esc(L(ag.cargo))}, arco</span></div></div>` : ""}<h2>${x.visita}</h2><p>${x.visitaTxt}</p>${formulario("visita", `<input type="hidden" name="vivienda" value="${esc((p.ref || "") + " " + tit)}">`)}
+      ${enlace ? `<p style="margin-top:14px"><a class="enlace" href="${esc(enlace)}" target="_blank" rel="noopener">${x.verIdealista}</a></p>` : ""}</aside></div>
+  </div>`,
+    listo() {
+      const m = $("form.f textarea"); if (m) m.value = x.msgVisita(tit);
+      document.querySelectorAll(".mini button").forEach(bt => bt.addEventListener("click", () => {
+        document.querySelectorAll(".mini button").forEach(o => o.removeAttribute("aria-current")); bt.setAttribute("aria-current", "true");
+        $("#fotoG img").src = fotos[+bt.dataset.i];
+      }));
+    } };
+};
+
+P.barrios = () => {
+  const lista = casas();
+  return { titulo: t().barrios, html: `<div class="w"><div class="pag-cab"><h1>${esc(L((C.portada || {}).tituloBarrios))}</h1><p>${esc(L((C.portada || {}).textoBarrios))}</p></div>
+  ${(C.barrios || []).map(b => { const suyas = lista.filter(p => p.barrio === b.id); return `<section class="barrio-fila"><div><h2><a href="#barrio-${esc(b.id)}">${esc(b.nombre)}</a></h2><p class="z">${esc(L(b.zona))}</p></div>
+    <div><p class="t">${esc(L(b.texto))}</p>${suyas.length ? `<div class="mini-casas">${suyas.map(tarjeta).join("")}</div>` : `<p class="nota">${t().sinCasasBarrio}</p>`}</div></section>`; }).join("")}</div>` };
+};
+
+P.barrio = id => {
+  const b = barrio(id); if (!b) return P.nada();
+  const suyas = casas().filter(p => p.barrio === id);
+  return { titulo: b.nombre, desc: L(b.texto), html: `<div class="w"><div class="pag-cab"><a class="volver" href="#barrios">‹ ${t().volverBarrios}</a><h1>${esc(b.nombre)}</h1><p>${esc(L(b.zona))}</p></div>
+    <div class="dos-col"><div><p class="prosa">${esc(L(b.texto))}</p></div>
+      ${b.foto ? `<div class="arco foto" style="aspect-ratio:4/5">${img(b.foto, b.nombre, b.id)}</div>` : b.lat ? `<div>${plano([{ lat: +b.lat, lng: +b.lng, nombre: b.nombre }], 30)}</div>` : ""}</div>
+    
+    <section class="sec" style="padding-bottom:0"><div class="sec-cab"><h2>${t().nCasas(suyas.length)}</h2></div>
+    ${suyas.length ? `<div class="rejilla">${suyas.map(tarjeta).join("")}</div>` : `<p class="vacio" style="padding-top:0">${t().sinCasasBarrio} <a class="enlace" href="#viviendas">${t().verTodas}</a></p>`}</section></div>` };
+};
+
+P.vender = () => {
+  const v = C.vender || {}, x = t();
+  return { titulo: L(v.titulo), desc: L(v.texto), html: `<div class="w"><div class="pag-cab"><h1>${esc(L(v.titulo))}</h1><p>${esc(L(v.texto))}</p></div>
+    <div class="dos-col"><ol class="pasos">${(v.pasos || []).map(s => `<li><div><h3>${esc(L(s.titulo))}</h3><p>${esc(L(s.texto))}</p></div></li>`).join("")}</ol>
+    <div class="caja"><h2>${esc(L(v.tituloForm))}</h2><p>${esc(L(v.textoForm))}</p>
+      ${formulario("valoracion", `<label>${x.direccionCasa}<input name="direccion" autocomplete="street-address"></label><label>${x.m2}<input name="m2" inputmode="numeric"></label>`)}</div></div></div>` };
+};
+
+P.sobre = () => {
+  const s = C.sobre || {}, g = C.general || {};
+  return { titulo: t().sobre, desc: L(s.texto), html: `<div class="w"><div class="pag-cab"><h1>${esc(L(s.titulo))}</h1></div>
+    <p class="prosa">${esc(L(s.texto))}</p>
+    ${(s.equipo || []).length ? `<section class="sec" style="padding-bottom:0"><div class="sec-cab"><h2>${t().equipo}</h2></div><div class="equipo">${s.equipo.map(e => `<div>${e.foto ? `<div class="arco foto">${img(e.foto, e.nombre, e.nombre)}</div>` : ""}<h3>${esc(e.nombre)}</h3><p class="c">${esc(L(e.cargo))}</p>${L(e.texto) ? `<p style="margin-top:10px">${esc(L(e.texto))}</p>` : ""}</div>`).join("")}</div></section>` : ""}
+    <section class="sec" style="padding-bottom:0"><div class="sec-cab"><h2>${t().dondeEstamos}</h2><p>${esc(g.direccion)}, ${esc(g.cp)}</p></div>${g.lat && g.lng ? plano([{ lat: +g.lat, lng: +g.lng, nombre: "arco" }]) : ""}</section></div>` };
+};
+
+P.contacto = () => {
+  const g = C.general || {}, x = t();
+  const dato = (k, v, href) => v ? `<p><span>${k}</span>${href ? `<a href="${esc(href)}">${esc(v)}</a>` : esc(v)}</p>` : "";
+  return { titulo: x.contacto, html: `<div class="w"><div class="pag-cab"><h1>${x.escribenos}</h1><p>${x.contactoTxt}</p></div>
+    <div class="dos-col"><div class="caja" style="position:static">${formulario("contacto")}</div>
+    <div class="contacto-datos">${dato(x.direccion, [g.direccion, g.cp].filter(Boolean).join(", "))}${dato(x.telefono, g.telefono, "tel:" + String(g.telefono || "").replace(/\s/g, ""))}${dato(x.correo, g.correo, "mailto:" + g.correo)}${dato(x.horario, L(g.horario))}${dato("Instagram", g.instagram && "@" + String(g.instagram).replace(/^@|.*instagram\.com\//, "").replace(/\/$/, ""), g.instagram && "https://www.instagram.com/" + String(g.instagram).replace(/^@|.*instagram\.com\//, ""))}${dato("Idealista", g.idealista && x.tambien, g.idealista)}</div></div></div>` };
+};
+P.privacidad = () => ({ titulo: t().privacidad, html: `<div class="w"><div class="pag-cab"><h1>${t().privacidad}</h1></div><p class="prosa">${esc(L((C.legal || {}).privacidad))}</p></div>` });
+P.nada = () => ({ html: `<div class="w"><div class="pag-cab"><h1>${t().noEncontrada}</h1><p><a class="enlace" href="#inicio">${t().inicio}</a></p></div></div>` });
+
+/* ---------- marco, rutas ---------- */
+function marco() {
+  const x = t(), g = C.general || {}, ruta = location.hash.slice(1);
+  document.documentElement.lang = lang;
+  if (/^#[0-9a-f]{6}$/i.test(g.color || "")) document.documentElement.style.setProperty("--azul", g.color);
+  const en = [["viviendas", x.viviendas, /^viviend/], ["barrios", x.barrios, /^barrio/], ["vender", x.vender, /^vender/], ["sobre", x.sobre, /^sobre/], ["contacto", x.contacto, /^contacto/]];
+  $("#nav").innerHTML = en.map(([h, n, r]) => `<a href="#${h}"${r.test(ruta) ? ' aria-current="page"' : ""}>${n}</a>`).join("") + `<button class="idioma" id="idioma" aria-label="${x.otroLabel}">${x.otro}</button>`;
+  $("#menuBtn").textContent = x.menu;
+  $("#idioma").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; try { localStorage.setItem("arco-lang", lang); } catch (e) {} pintar(true); });
+  $("#pie").innerHTML = `<div class="w"><div class="g">
+    <div><a class="logo" href="#inicio"><svg viewBox="0 0 22 28" aria-hidden="true"><path d="M2 28V11a9 9 0 0 1 18 0v17" fill="none" stroke="currentColor" stroke-width="2.4"/></svg><span>arco</span></a></div>
+    <ul>${en.map(([h, n]) => `<li><a href="#${h}">${n}</a></li>`).join("")}</ul>
+    <ul><li>${esc(g.direccion)}</li><li>${esc(g.cp)}</li>${g.telefono ? `<li><a href="tel:${esc(String(g.telefono).replace(/\s/g, ""))}">${esc(g.telefono)}</a></li>` : ""}${g.correo ? `<li><a href="mailto:${esc(g.correo)}">${esc(g.correo)}</a></li>` : ""}${g.idealista ? `<li><a href="${esc(g.idealista)}" target="_blank" rel="noopener">${x.tambien}</a></li>` : ""}</ul>
+  </div><div class="fin"><span>© ${new Date().getFullYear()} arco. ${x.derechos}</span><a href="#privacidad">${x.privacidad}</a></div></div>`;
+}
+function pintar(mismo) {
+  const h = decodeURIComponent(location.hash.slice(1));
+  const pag = h === "" || h === "inicio" ? P.inicio() : h.startsWith("vivienda-") ? P.vivienda(h.slice(9)) : h.startsWith("barrio-") ? P.barrio(h.slice(7)) : ["viviendas", "barrios", "vender", "sobre", "contacto", "privacidad"].includes(h) ? P[h]() : P.nada();
+  marco();
+  $("#main").innerHTML = pag.html; document.body.classList.toggle("portada", !!pag.portada);
+  document.title = (pag.titulo ? pag.titulo + " · " : "") + "arco. " + (lang === "es" ? "Casas en Madrid" : "Homes in Madrid");
+  const d = $('meta[name="description"]'); d.content = (pag.desc || L((C.general || {}).descripcion)).slice(0, 160);
+  $("#nav").classList.remove("abierto"); $("#menuBtn").setAttribute("aria-expanded", "false");
+  if (pag.listo) pag.listo();
+  if (!mismo) { window.scrollTo(0, 0); }
+}
+$("#menuBtn").addEventListener("click", () => { const a = $("#nav").classList.toggle("abierto"); $("#menuBtn").setAttribute("aria-expanded", a); });
+window.addEventListener("hashchange", () => pintar());
+
+/* ---------- formularios ---------- */
+document.addEventListener("submit", async e => {
+  const f = e.target.closest("form.f"); if (!f) return; e.preventDefault();
+  const x = t(), d = Object.fromEntries(new FormData(f)), aviso = $(".aviso", f), boton = $("button", f), txt = boton.textContent;
+  const di = (m, c) => { aviso.textContent = m; aviso.className = "aviso " + c; };
+  if (!d.nombre.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.correo.trim()) || !d.acepta) return di(x.errDatos, "mal");
+  if (!API) return di(x.demo, "mal");
+  boton.disabled = true; boton.textContent = x.enviando;
+  try {
+    const r = await fetch(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ accion: "contacto", tipo: f.dataset.tipo, idioma: lang, ...d, acepta: true }) }).then(r => r.json());
+    if (!r.ok) throw new Error(r.error);
+    f.reset(); di(x.enviado, "bien");
+  } catch (err) { di(err.message === "limite" ? x.errLimite : err.message === "datos" ? x.errDatos : x.errRed, "mal"); }
+  boton.disabled = false; boton.textContent = txt;
+});
+
+/* ---------- datos en vivo ---------- */
+pintar();
+if (API) fetch(API).then(r => r.json()).then(d => { if (d && typeof d === "object" && !d.error) { const antes = JSON.stringify(C); C = Object.assign({}, window.CONTENIDO_BASE, d); guardar("arco-copia", d); if (JSON.stringify(C) !== antes) pintar(true); } }).catch(() => {});
+window.addEventListener("storage", e => { if (!API && e.key === "arco-demo") { C = Object.assign({}, window.CONTENIDO_BASE, leer("arco-demo")); pintar(true); } });
+})();
+</script>
+</body>
+</html>
