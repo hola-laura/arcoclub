@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Panel de arco</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Panel de Arco Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--cal:#F5F6F3;--blanco:#fff;--tinta:#141822;--azul:#1B3B8C;--granito:#62666E;--linea:#D9DBD6;--piedra:#E9EAE5;--albero:#E2A93B;--rojo:#A3261E;--verde:#1E6B3C;--serif:"Fraunces",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif}
+:root{--cal:#F5F6F3;--blanco:#fff;--tinta:#141822;--azul:#2A2A2A;--granito:#62666E;--linea:#D9DBD6;--piedra:#E9EAE5;--albero:#E2A93B;--rojo:#A3261E;--verde:#1E6B3C;--serif:"Jost",system-ui,sans-serif;--sans:"Hanken Grotesk",system-ui,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:var(--cal);color:var(--tinta);font:400 16px/1.5 var(--sans)}
 h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
@@ -29,7 +29,7 @@ button{font:500 15px var(--sans);cursor:pointer;color:inherit}
 .lado .marca{font:400 30px var(--serif);padding:0 10px 20px;display:block}
 .lado button{display:flex;justify-content:space-between;width:100%;text-align:left;background:none;border:0;color:#fff;padding:10px;border-radius:2px;font-size:16px;opacity:.75}
 .lado button:hover{opacity:1}
-.lado button[aria-current]{background:var(--azul);opacity:1}
+.lado button[aria-current]{background:#B9A26A;opacity:1}
 .lado button i{font-style:normal;color:var(--albero)}
 .lado .fuera{margin-top:24px;padding:16px 10px 0;border-top:1px solid rgba(255,255,255,.2);display:grid;gap:10px;font-size:15px}
 .lado .fuera a{color:#fff}
@@ -133,7 +133,7 @@ const S = {
       { k: "titulo", n: "Título", t: "bi" }, { k: "texto", n: "Texto", t: "biarea" },
       { k: "pasos", n: "Pasos", t: "sub", nuevo: "Añadir paso", plantilla: () => ({ titulo: { es: "", en: "" }, texto: { es: "", en: "" } }), titulo: s => (s.titulo || {}).es || "Paso nuevo", campos: [{ k: "titulo", n: "Título", t: "bi" }, { k: "texto", n: "Texto", t: "biarea" }] },
       { k: "tituloForm", n: "Título del formulario", t: "bi" }, { k: "textoForm", n: "Texto del formulario", t: "bi" } ] },
-  sobre: { nombre: "Sobre arco", campos: [
+  sobre: { nombre: "Sobre nosotros", campos: [
       { k: "titulo", n: "Título", t: "bi" }, { k: "texto", n: "Texto", t: "biarea" },
       { k: "equipo", n: "Equipo", t: "sub", nuevo: "Añadir persona", plantilla: () => ({ nombre: "", cargo: { es: "", en: "" }, texto: { es: "", en: "" }, foto: "" }), titulo: e => e.nombre || "Persona nueva", campos: [{ k: "nombre", n: "Nombre", t: "text" }, { k: "cargo", n: "Cargo", t: "bi" }, { k: "texto", n: "Presentación", t: "biarea" }, { k: "foto", n: "Foto", t: "foto" }] } ] },
   general: { nombre: "Datos y contacto", campos: [
@@ -197,7 +197,7 @@ function campo(f, obj, ruta) {
   const v = obj[f.k], r = ruta + "." + f.k, ay = f.ayuda ? `<small>${f.ayuda}</small>` : "";
   if (f.t === "text") return `<div class="campo"><label><span>${f.n}</span><input type="text" data-r="${r}" value="${esc(v)}"></label>${ay}</div>`;
   if (f.t === "num") return `<div class="campo"><label><span>${f.n}</span><input type="number" step="${f.paso || 1}" data-r="${r}" data-num value="${esc(v)}"></label>${ay}</div>`;
-  if (f.t === "color") return `<div class="campo"><label><span>${f.n}</span><input type="color" data-r="${r}" value="${esc(v || "#1B3B8C")}"></label>${ay}</div>`;
+  if (f.t === "color") return `<div class="campo"><label><span>${f.n}</span><input type="color" data-r="${r}" value="${esc(v || "#2A2A2A")}"></label>${ay}</div>`;
   if (f.t === "bool") return `<label class="casilla"><input type="checkbox" data-r="${r}" data-bool${v ? " checked" : ""}>${f.n}</label>`;
   if (f.t === "sel") return `<div class="campo"><label><span>${f.n}</span><select data-r="${r}">${f.op().map(([a, b]) => `<option value="${esc(a)}"${a === v ? " selected" : ""}>${esc(b)}</option>`).join("")}</select></label>${ay}</div>`;
   if (f.t === "bi" || f.t === "biarea") {
@@ -239,7 +239,7 @@ function pintar() {
   pintarLado(); window.scrollTo(0, y);
 }
 function app() {
-  $("#raiz").innerHTML = `<div class="app"><aside class="lado"><span class="marca">arco</span><nav id="lado"></nav><div class="fuera"><a href="index.html" target="_blank" rel="noopener">Ver la web</a><button type="button" id="salir" style="padding:0;opacity:.75">Salir</button></div></aside>
+  $("#raiz").innerHTML = `<div class="app"><aside class="lado"><span class="marca">Arco Club</span><nav id="lado"></nav><div class="fuera"><a href="index.html" target="_blank" rel="noopener">Ver la web</a><button type="button" id="salir" style="padding:0;opacity:.75">Salir</button></div></aside>
     <div><div class="barra"><h1 id="titulo"></h1><div class="der"><span class="estado" id="estado" role="status"></span><button class="btn" id="guardar" disabled>Guardar cambios</button></div></div><div class="cuerpo" id="cuerpo"></div></div></div>`;
   $("#guardar").addEventListener("click", guardarTodo);
   $("#salir").addEventListener("click", () => { sessionStorage.removeItem("arco-clave"); location.reload(); });
@@ -281,7 +281,7 @@ document.addEventListener("focusout", e => {
 
 /* ---------- entrada ---------- */
 function entrada(msg) {
-  $("#raiz").innerHTML = `<div class="entrada"><form id="entrar"><h1>Panel de arco</h1><p>Desde aquí se cambian las viviendas, las fotos y los textos de la web.</p>
+  $("#raiz").innerHTML = `<div class="entrada"><form id="entrar"><h1>Panel de Arco Club</h1><p>Desde aquí se cambian las viviendas, las fotos y los textos de la web.</p>
     <div class="campo"><label><span>Contraseña</span><input type="password" id="pw" autocomplete="current-password" required></label></div>
     <button class="btn">Entrar</button><p class="estado mal" style="margin:14px 0 0" role="alert">${msg || ""}</p></form></div>`;
   $("#entrar").addEventListener("submit", async e => {

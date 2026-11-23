@@ -1,8 +1,8 @@
 // Contenido inicial de la web. Lo que se guarda desde el panel lo sustituye.
 window.CONTENIDO_BASE = {
  "general": {
-  "nombre": "arco",
-  "color": "#1B3B8C",
+  "nombre": "Arco Club",
+  "color": "#2A2A2A",
   "direccion": "Calle de Toledo, 139",
   "cp": "28005 Madrid",
   "lat": 40.4046,
@@ -27,8 +27,8 @@ window.CONTENIDO_BASE = {
    "en": "Homes with character in Madrid"
   },
   "texto": {
-   "es": "arco es una agencia pequeña de la calle de Toledo. Llevamos pocas viviendas a la vez para conocer bien cada una: la casa, el edificio y el barrio.",
-   "en": "arco is a small agency on Calle de Toledo. We take on a few homes at a time so we know each one well: the home, the building and the neighbourhood."
+   "es": "Arco Club es una agencia pequeña de la calle de Toledo. Llevamos pocas viviendas a la vez para conocer bien cada una: la casa, el edificio y el barrio.",
+   "en": "Arco Club is a small agency on Calle de Toledo. We take on a few homes at a time so we know each one well: the home, the building and the neighbourhood."
   },
   "foto": "",
   "tituloViviendas": {
@@ -358,8 +358,8 @@ window.CONTENIDO_BASE = {
  ],
  "vender": {
   "titulo": {
-   "es": "Vende tu casa con arco",
-   "en": "Sell your home with arco"
+   "es": "Vende tu casa con Arco Club",
+   "en": "Sell your home with Arco Club"
   },
   "texto": {
    "es": "Llevamos pocas viviendas a la vez. La tuya no será un anuncio más entre cientos.",
@@ -422,8 +422,8 @@ window.CONTENIDO_BASE = {
    "en": "A small agency, on purpose"
   },
   "texto": {
-   "es": "arco trabaja desde la calle de Toledo, en Madrid. Preferimos llevar pocas viviendas y conocerlas bien a tener un escaparate enorme. Quien te enseña la casa es quien ha hablado con el propietario.",
-   "en": "arco works from Calle de Toledo, in Madrid. We would rather take on a few homes and know them well than run a huge shop window. The person who shows you the home is the person who has spoken to the owner."
+   "es": "Arco Club trabaja desde la calle de Toledo, en Madrid. Preferimos llevar pocas viviendas y conocerlas bien a tener un escaparate enorme. Quien te enseña la casa es quien ha hablado con el propietario.",
+   "en": "Arco Club works from Calle de Toledo, in Madrid. We would rather take on a few homes and know them well than run a huge shop window. The person who shows you the home is the person who has spoken to the owner."
   },
   "equipo": [
    {

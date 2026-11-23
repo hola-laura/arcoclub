@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>arco. Casas en Madrid</title>
+<title>Arco Club. Casas en Madrid</title>
 <meta name="description" content="Agencia inmobiliaria en Madrid. Pocas viviendas, bien conocidas.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B3B8C'/%3E%3Cpath d='M9 26V15a7 7 0 0 1 14 0v11' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F1ECE1'/%3E%3Cpath d='M9 26V15a7 7 0 0 1 14 0v11' fill='none' stroke='%23B9A26A' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --cal:#EFEDE6; --blanco:#FFFFFF; --tinta:#111111; --azul:#1B3B8C; --granito:#62666E;
@@ -240,6 +240,45 @@ body.portada .nav a:hover{border-color:#fff}
 .pie-web{background:#070A14;margin-top:0}
 .pie-web .logo{font-size:clamp(34px,4.4vw,60px);color:#fff}
 main>.w:last-child{padding-bottom:clamp(56px,8vw,112px)}
+
+/* marca de Arco Club: crema, carbón y dorado; tipografía fina en mayúsculas espaciadas */
+:root{--cal:#FBF9F4;--tinta:#2A2A2A;--azul:#2A2A2A;--oro:#B9A26A;--linea:#E4DED0;--piedra:#F1ECE1;--granito:#6B6862;--serif:"Jost",system-ui,sans-serif}
+h1,h2,h3{font-weight:300;letter-spacing:.01em}
+.cab{background:var(--cal)}
+.logo{letter-spacing:0;gap:0}
+.logo svg.lg{width:auto;height:52px}
+.pie-web .logo svg.lg{height:clamp(90px,10vw,130px)}
+.nav{font-family:var(--serif);text-transform:uppercase;letter-spacing:.16em;font-size:12.5px}
+.nav a:hover,.nav a[aria-current]{border-color:var(--oro)}
+body.portada .nav a:hover{border-color:var(--oro)}
+.idioma{font-family:var(--serif);letter-spacing:.12em}
+.btn{font-family:var(--serif);text-transform:uppercase;letter-spacing:.18em;font-size:13px;font-weight:400;padding:17px 28px}
+.btn:hover,.busca .btn:hover{background:var(--oro);color:#fff}
+.busca .btn{background:var(--tinta)}
+:focus-visible{outline-color:var(--oro)}
+.foto,.lugar{background:#2B2926}
+.hero2{background:#1E1D1B}
+.hero2 .fondo::after{background:linear-gradient(rgba(20,19,17,.55),rgba(20,19,17,.1) 36%,rgba(20,19,17,.8))}
+.hero2 h1{text-transform:uppercase;letter-spacing:.1em;font-size:clamp(32px,4.6vw,68px);line-height:1.15;max-width:14em}
+.hero2 h1::before{content:"";display:block;width:64px;height:1.5px;background:var(--oro);margin-bottom:28px}
+.sec-cab h2,.vende h2,.pag-cab h1{text-transform:uppercase;letter-spacing:.12em;line-height:1.2}
+.sec-cab h2{font-size:clamp(24px,2.6vw,36px)}
+.sec-cab h2::after{content:"";display:block;width:48px;height:1.5px;background:var(--oro);margin-top:18px}
+.pag-cab h1{font-size:clamp(30px,4vw,56px)}
+.vende h2{font-size:clamp(26px,3vw,42px)}
+.ficha-top h1{font-size:clamp(28px,3.4vw,46px);letter-spacing:.02em}
+.casa .precio{font:400 24px/1.1 var(--serif);letter-spacing:.02em}
+.estado{background:var(--oro);color:#fff}
+.lugar b{font:300 clamp(20px,2vw,28px)/1.1 var(--serif);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.vende{background:#1E1D1B}
+.btn.claro{color:var(--tinta)}.btn.claro:hover{background:var(--oro);color:#fff}
+.rasgos b{font:300 30px/1 var(--serif)}
+.agente b{font:400 19px/1.1 var(--serif)}
+.caja h2,.ficha h2{letter-spacing:.02em}
+.plano .rot text{font:400 12px var(--serif);fill:var(--granito);opacity:1;letter-spacing:.08em}
+.plano g[fill="none"]{stroke:var(--oro)}
+.pasos li::before{color:var(--oro)}
+.pie-web{background:#1A1917}
 @media (max-width:900px){
   .busca{grid-template-columns:1fr}.busca label{border-right:0;border-bottom:1px solid var(--linea)}.busca .btn{padding:16px}
   .lugares{grid-template-columns:1fr 1fr}.vende{grid-template-columns:1fr}.vende .foto{min-height:240px}
@@ -269,7 +308,7 @@ main>.w:last-child{padding-bottom:clamp(56px,8vw,112px)}
 </head>
 <body>
 <header class="cab"><div class="w">
-  <a class="logo" href="#inicio" aria-label="arco, inicio"><svg viewBox="0 0 22 28" aria-hidden="true"><path d="M2 28V11a9 9 0 0 1 18 0v17" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>arco</span></a>
+  <a class="logo" href="#inicio" aria-label="Arco Club, inicio"><svg class="lg" viewBox="0 -2 122 60" aria-hidden="true"><path d="M30 15Q61 -7 92 15" fill="none" stroke="var(--oro)" stroke-width="1.3"/><path d="M7 40 16 18l9 22" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="37" y="40" font-family="Jost,sans-serif" font-weight="300" font-size="24" letter-spacing="10" fill="currentColor">RCO</text><path d="M30 46v9M92 46v9" stroke="var(--oro)" stroke-width="1.3"/><text x="62" y="55" text-anchor="middle" font-family="Jost,sans-serif" font-weight="400" font-size="9" letter-spacing="5" fill="currentColor" opacity=".7">CLUB</text></svg></a>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav"></button>
   <nav class="nav" id="nav"></nav>
 </div></header>
@@ -291,7 +330,7 @@ if (lang !== "en") lang = "es";
 let C = Object.assign({}, window.CONTENIDO_BASE, API ? leer("arco-copia") : leer("arco-demo"));
 
 const T = {
-  es: { viviendas: "Viviendas", barrios: "Barrios", vender: "Vender", sobre: "Sobre arco", contacto: "Contacto", menu: "Menú", otro: "EN", otroLabel: "Read in English",
+  es: { viviendas: "Viviendas", barrios: "Barrios", vender: "Vender", sobre: "Sobre nosotros", contacto: "Contacto", menu: "Menú", otro: "EN", otroLabel: "Read in English",
     buscar: "Buscar", verTodas: "Ver todas las viviendas", verCasas: "Ver las viviendas", venderMi: "Vender mi casa", pedirValoracion: "Pedir una valoración",
     hab: n => n + (n == 1 ? " dormitorio" : " dormitorios"), ban: n => n + (n == 1 ? " baño" : " baños"),
     tipos: { piso: "Piso", duplex: "Dúplex", atico: "Ático", chalet: "Casa o chalet", estudio: "Estudio", local: "Local", otro: "Otro" },
@@ -304,13 +343,13 @@ const T = {
     descripcion: "La vivienda", elBarrio: "El barrio", zona: "Dónde está", zonaNota: "El círculo marca la zona aproximada, no la dirección exacta.", masBarrio: "Más sobre ",
     visita: "Pide una visita", visitaTxt: "Te respondemos para buscar un día.", verIdealista: "Ver el anuncio completo",
     nombre: "Nombre", correo: "Correo", telefono: "Teléfono", mensaje: "Mensaje", direccionCasa: "Dirección de la vivienda", m2: "Metros cuadrados (aproximados)",
-    acepto: "He leído la información de privacidad y acepto que arco use estos datos para responderme.", privacidad: "Privacidad",
+    acepto: "He leído la información de privacidad y acepto que Arco Club use estos datos para responderme.", privacidad: "Privacidad",
     enviar: "Enviar mensaje", enviarVisita: "Pedir visita", enviarValoracion: "Pedir valoración", enviando: "Enviando…",
     enviado: "Mensaje enviado. Te responderemos lo antes posible.", errDatos: "Revisa el nombre, el correo y la casilla de privacidad.", errRed: "No se ha podido enviar. Inténtalo otra vez en unos minutos.", errLimite: "Hemos recibido muchos mensajes seguidos. Inténtalo más tarde.", demo: "Web de prueba: el formulario todavía no está conectado, así que el mensaje no se ha enviado.",
     msgVisita: t => "Me gustaría visitar: " + t + ".",
     equipo: "Quién está detrás", dondeEstamos: "Dónde estamos", direccion: "Dirección", horario: "Horario", escribenos: "Escríbenos", contactoTxt: "Cuéntanos qué buscas o qué quieres vender.",
     tambien: "También en Idealista", noEncontrada: "Esta página no existe.", inicio: "Volver al inicio", derechos: "Todos los derechos reservados.", m: " m²" },
-  en: { viviendas: "Homes", barrios: "Neighbourhoods", vender: "Sell", sobre: "About arco", contacto: "Contact", menu: "Menu", otro: "ES", otroLabel: "Leer en español",
+  en: { viviendas: "Homes", barrios: "Neighbourhoods", vender: "Sell", sobre: "About us", contacto: "Contact", menu: "Menu", otro: "ES", otroLabel: "Leer en español",
     buscar: "Search", verTodas: "See all homes", verCasas: "See the homes", venderMi: "Sell my home", pedirValoracion: "Ask for a valuation",
     hab: n => n + (n == 1 ? " bedroom" : " bedrooms"), ban: n => n + (n == 1 ? " bathroom" : " bathrooms"),
     tipos: { piso: "Flat", duplex: "Duplex", atico: "Penthouse", chalet: "House", estudio: "Studio", local: "Commercial unit", otro: "Other" },
@@ -323,7 +362,7 @@ const T = {
     descripcion: "The home", elBarrio: "The neighbourhood", zona: "Where it is", zonaNota: "The circle marks the approximate area, not the exact address.", masBarrio: "More about ",
     visita: "Ask for a viewing", visitaTxt: "We will reply to find a day.", verIdealista: "See the full listing",
     nombre: "Name", correo: "Email", telefono: "Phone", mensaje: "Message", direccionCasa: "Address of the home", m2: "Square metres (approximate)",
-    acepto: "I have read the privacy information and agree to arco using these details to reply to me.", privacidad: "Privacy",
+    acepto: "I have read the privacy information and agree to Arco Club using these details to reply to me.", privacidad: "Privacy",
     enviar: "Send message", enviarVisita: "Ask for a viewing", enviarValoracion: "Ask for a valuation", enviando: "Sending…",
     enviado: "Message sent. We will reply as soon as we can.", errDatos: "Check the name, the email and the privacy box.", errRed: "The message could not be sent. Try again in a few minutes.", errLimite: "We have received many messages in a row. Try again later.", demo: "Test site: the form is not connected yet, so the message was not sent.",
     msgVisita: t => "I would like to view: " + t + ".",
@@ -352,8 +391,8 @@ function plano(puntos, radio) {
   const X = g => (g + 3.80) / 0.28 * 600, Y = l => (40.50 - l) / 0.14 * 400, pt = (g, l) => X(g).toFixed(0) + " " + Y(l).toFixed(0);
   const linea = a => "M" + a.map(p => pt(p[0], p[1])).join("L");
   const pines = puntos.map(p => { const fuera = p.lng > -3.53 || p.lat > 40.495, x = Math.max(20, Math.min(580, X(p.lng))), y = Math.max(20, Math.min(380, Y(p.lat))), izq = x > 430;
-    return `<a href="${esc(p.href || "#")}" class="pin">${radio && !fuera ? `<circle cx="${x}" cy="${y}" r="${radio}" fill="var(--azul)" fill-opacity=".14" stroke="var(--azul)"/>` : ""}<circle cx="${x}" cy="${y}" r="6" fill="var(--albero)" stroke="#111" stroke-width="1.5"/><text x="${x + (izq ? -11 : 11) * (radio && !fuera ? radio / 9 : 1)}" y="${y + 5}" text-anchor="${izq ? "end" : "start"}">${esc(p.nombre)}${fuera ? " ↗" : ""}</text></a>`; }).join("");
-  return `<svg class="plano" viewBox="0 0 600 400" role="img" aria-label="${lang === "es" ? "Plano orientativo de Madrid" : "Sketch map of Madrid"}"><g fill="none" stroke="var(--azul)">
+    return `<a href="${esc(p.href || "#")}" class="pin">${radio && !fuera ? `<circle cx="${x}" cy="${y}" r="${radio}" fill="var(--oro)" fill-opacity=".2" stroke="var(--oro)"/>` : ""}<circle cx="${x}" cy="${y}" r="5.5" fill="var(--oro)" stroke="#2A2A2A" stroke-width="1.2"/><text x="${x + (izq ? -11 : 11) * (radio && !fuera ? radio / 9 : 1)}" y="${y + 5}" text-anchor="${izq ? "end" : "start"}">${esc(p.nombre)}${fuera ? " ↗" : ""}</text></a>`; }).join("");
+  return `<svg class="plano" viewBox="0 0 600 400" role="img" aria-label="${lang === "es" ? "Plano orientativo de Madrid" : "Sketch map of Madrid"}"><g fill="none" stroke="var(--oro)">
     <path d="${linea([[-3.745, 40.475], [-3.728, 40.435], [-3.722, 40.415], [-3.715, 40.398], [-3.700, 40.385], [-3.680, 40.368]])}" stroke-width="9" stroke-opacity=".16" stroke-linecap="round"/>
     <ellipse cx="${X(-3.693)}" cy="${Y(40.432)}" rx="76" ry="128" stroke-opacity=".35" stroke-dasharray="2 7"/>
     <path d="${linea([[-3.690, 40.50], [-3.691, 40.425], [-3.693, 40.407]])}" stroke-width="2.5" stroke-opacity=".4"/>
@@ -451,7 +490,7 @@ P.vivienda = id => {
       ${p.lat && p.lng ? `<h2>${x.zona}</h2>${plano([{ lat: +p.lat, lng: +p.lng, nombre: b ? b.nombre : "" }], 22)}<p class="nota">${x.zonaNota}</p>` : ""}
       ${b ? `<h2>${x.elBarrio}</h2><p class="desc">${esc(L(b.texto))}</p><p style="margin-top:14px"><a class="enlace" href="#barrio-${esc(b.id)}">${x.masBarrio}${esc(b.nombre)}</a></p>` : ""}
     </div>
-    <aside class="caja">${ag ? `<div class="agente">${ag.foto ? `<div class="foto"><img src="${esc(ag.foto)}" alt=""></div>` : ""}<div><b>${esc(ag.nombre)}</b><span>${esc(L(ag.cargo))}, arco</span></div></div>` : ""}<h2>${x.visita}</h2><p>${x.visitaTxt}</p>${formulario("visita", `<input type="hidden" name="vivienda" value="${esc((p.ref || "") + " " + tit)}">`)}
+    <aside class="caja">${ag ? `<div class="agente">${ag.foto ? `<div class="foto"><img src="${esc(ag.foto)}" alt=""></div>` : ""}<div><b>${esc(ag.nombre)}</b><span>${esc(L(ag.cargo))}, Arco Club</span></div></div>` : ""}<h2>${x.visita}</h2><p>${x.visitaTxt}</p>${formulario("visita", `<input type="hidden" name="vivienda" value="${esc((p.ref || "") + " " + tit)}">`)}
       ${enlace ? `<p style="margin-top:14px"><a class="enlace" href="${esc(enlace)}" target="_blank" rel="noopener">${x.verIdealista}</a></p>` : ""}</aside></div>
   </div>`,
     listo() {
@@ -494,7 +533,7 @@ P.sobre = () => {
   return { titulo: t().sobre, desc: L(s.texto), html: `<div class="w"><div class="pag-cab"><h1>${esc(L(s.titulo))}</h1></div>
     <p class="prosa">${esc(L(s.texto))}</p>
     ${(s.equipo || []).length ? `<section class="sec" style="padding-bottom:0"><div class="sec-cab"><h2>${t().equipo}</h2></div><div class="equipo">${s.equipo.map(e => `<div>${e.foto ? `<div class="arco foto">${img(e.foto, e.nombre, e.nombre)}</div>` : ""}<h3>${esc(e.nombre)}</h3><p class="c">${esc(L(e.cargo))}</p>${L(e.texto) ? `<p style="margin-top:10px">${esc(L(e.texto))}</p>` : ""}</div>`).join("")}</div></section>` : ""}
-    <section class="sec" style="padding-bottom:0"><div class="sec-cab"><h2>${t().dondeEstamos}</h2><p>${esc(g.direccion)}, ${esc(g.cp)}</p></div>${g.lat && g.lng ? plano([{ lat: +g.lat, lng: +g.lng, nombre: "arco" }]) : ""}</section></div>` };
+    <section class="sec" style="padding-bottom:0"><div class="sec-cab"><h2>${t().dondeEstamos}</h2><p>${esc(g.direccion)}, ${esc(g.cp)}</p></div>${g.lat && g.lng ? plano([{ lat: +g.lat, lng: +g.lng, nombre: "Arco Club" }]) : ""}</section></div>` };
 };
 
 P.contacto = () => {
@@ -517,17 +556,17 @@ function marco() {
   $("#menuBtn").textContent = x.menu;
   $("#idioma").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; try { localStorage.setItem("arco-lang", lang); } catch (e) {} pintar(true); });
   $("#pie").innerHTML = `<div class="w"><div class="g">
-    <div><a class="logo" href="#inicio"><svg viewBox="0 0 22 28" aria-hidden="true"><path d="M2 28V11a9 9 0 0 1 18 0v17" fill="none" stroke="currentColor" stroke-width="2.4"/></svg><span>arco</span></a></div>
+    <div><a class="logo" href="#inicio"><svg class="lg" viewBox="0 -2 122 60" aria-hidden="true"><path d="M30 15Q61 -7 92 15" fill="none" stroke="var(--oro)" stroke-width="1.3"/><path d="M7 40 16 18l9 22" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="37" y="40" font-family="Jost,sans-serif" font-weight="300" font-size="24" letter-spacing="10" fill="currentColor">RCO</text><path d="M30 46v9M92 46v9" stroke="var(--oro)" stroke-width="1.3"/><text x="62" y="55" text-anchor="middle" font-family="Jost,sans-serif" font-weight="400" font-size="9" letter-spacing="5" fill="currentColor" opacity=".7">CLUB</text></svg></a></div>
     <ul>${en.map(([h, n]) => `<li><a href="#${h}">${n}</a></li>`).join("")}</ul>
     <ul><li>${esc(g.direccion)}</li><li>${esc(g.cp)}</li>${g.telefono ? `<li><a href="tel:${esc(String(g.telefono).replace(/\s/g, ""))}">${esc(g.telefono)}</a></li>` : ""}${g.correo ? `<li><a href="mailto:${esc(g.correo)}">${esc(g.correo)}</a></li>` : ""}${g.idealista ? `<li><a href="${esc(g.idealista)}" target="_blank" rel="noopener">${x.tambien}</a></li>` : ""}</ul>
-  </div><div class="fin"><span>© ${new Date().getFullYear()} arco. ${x.derechos}</span><a href="#privacidad">${x.privacidad}</a></div></div>`;
+  </div><div class="fin"><span>© ${new Date().getFullYear()} Arco Club. ${x.derechos}</span><a href="#privacidad">${x.privacidad}</a></div></div>`;
 }
 function pintar(mismo) {
   const h = decodeURIComponent(location.hash.slice(1));
   const pag = h === "" || h === "inicio" ? P.inicio() : h.startsWith("vivienda-") ? P.vivienda(h.slice(9)) : h.startsWith("barrio-") ? P.barrio(h.slice(7)) : ["viviendas", "barrios", "vender", "sobre", "contacto", "privacidad"].includes(h) ? P[h]() : P.nada();
   marco();
   $("#main").innerHTML = pag.html; document.body.classList.toggle("portada", !!pag.portada);
-  document.title = (pag.titulo ? pag.titulo + " · " : "") + "arco. " + (lang === "es" ? "Casas en Madrid" : "Homes in Madrid");
+  document.title = (pag.titulo ? pag.titulo + " · " : "") + "Arco Club. " + (lang === "es" ? "Casas en Madrid" : "Homes in Madrid");
   const d = $('meta[name="description"]'); d.content = (pag.desc || L((C.general || {}).descripcion)).slice(0, 160);
   $("#nav").classList.remove("abierto"); $("#menuBtn").setAttribute("aria-expanded", "false");
   if (pag.listo) pag.listo();
